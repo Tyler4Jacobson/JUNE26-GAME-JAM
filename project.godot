@@ -11,8 +11,14 @@ config_version=5
 [application]
 
 config/name="june26-game-jam"
+run/main_scene="uid://3bhxxdx5bytj"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=800
+window/size/viewport_height=600
 
 [physics]
 
