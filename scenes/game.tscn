@@ -114,10 +114,14 @@ texture = ExtResource("2_dis88")
 15:4/0 = 0
 16:4/0 = 0
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_lnu2h"]
+scenes/1/scene = ExtResource("1_cb66b")
+
 [sub_resource type="TileSet" id="TileSet_cb66b"]
 physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_dis88")
+sources/1 = SubResource("TileSetScenesCollectionSource_lnu2h")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5gf0t"]
 texture = ExtResource("2_dis88")
@@ -175,9 +179,6 @@ sources/0 = SubResource("TileSetAtlasSource_5gf0t")
 
 [node name="Node2D" type="Node2D" unique_id=2080951536]
 script = ExtResource("1_5gf0t")
-
-[node name="Player" parent="." unique_id=956896073 instance=ExtResource("1_cb66b")]
-position = Vector2(8, -8)
 
 [node name="TileMap" type="TileMap" parent="." unique_id=481160212]
 texture_filter = 1
