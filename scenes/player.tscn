@@ -1,40 +1,38 @@
-[gd_scene format=3 uid="uid://3bhxxdx5bytj"]
+[gd_scene format=3 uid="uid://ct67ejvdimnl5"]
 
-[ext_resource type="Script" uid="uid://m7f8vt35nef4" path="res://scripts/player_movement.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://dpheqtc63dbio" path="res://assets/Player.png" id="2_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://crn6h17ms0vra" path="res://assets/player_art.png" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://cu3b5xwm1ic26" path="res://scripts/player.gd" id="1_s027a"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8uh7m"]
-size = Vector2(16, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
+size = Vector2(8, 8)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1102079897]
-script = ExtResource("1_g2els")
+[node name="Player" type="CharacterBody2D" unique_id=956896073]
+z_index = 5
+script = ExtResource("1_s027a")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1020802721]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=897099604]
 texture_filter = 1
-texture = ExtResource("2_qhqgy")
+texture = ExtResource("1_4flbx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1704477039]
-shape = SubResource("RectangleShape2D_8uh7m")
-debug_color = Color(1.347661e-06, 0.59441316, 0.73293084, 0.41960785)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1278099715]
+shape = SubResource("RectangleShape2D_onrkg")
 
-[node name="up" type="RayCast2D" parent="." unique_id=34376054]
-position = Vector2(0, -16)
-target_position = Vector2(0, -16)
+[node name="up" type="RayCast2D" parent="." unique_id=362791034]
+position = Vector2(0, -8)
+target_position = Vector2(0, -8)
 hit_from_inside = true
 
-[node name="down" type="RayCast2D" parent="." unique_id=2049324717]
-position = Vector2(0, 16)
-target_position = Vector2(0, 16)
+[node name="down" type="RayCast2D" parent="." unique_id=1539787751]
+position = Vector2(0, 8)
+target_position = Vector2(0, 8)
 hit_from_inside = true
 
-[node name="left" type="RayCast2D" parent="." unique_id=1070312083]
-position = Vector2(-16, 0)
-target_position = Vector2(-16, 0)
+[node name="left" type="RayCast2D" parent="." unique_id=1333904518]
+position = Vector2(-8, 0)
+target_position = Vector2(-8, 0)
 hit_from_inside = true
 
-[node name="right" type="RayCast2D" parent="." unique_id=271731545]
-position = Vector2(16, 0)
-target_position = Vector2(16, 0)
+[node name="right" type="RayCast2D" parent="." unique_id=1574554572]
+position = Vector2(8, 0)
+target_position = Vector2(8, 0)
 hit_from_inside = true
-
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1971860421]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="june26-game-jam"
-run/main_scene="uid://lp15nw13u0ej"
+run/main_scene="uid://dbhh5j8hxms32"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
