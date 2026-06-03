@@ -34,22 +34,42 @@ texture_scale = 3.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1278099715]
 shape = SubResource("RectangleShape2D_onrkg")
 
-[node name="up" type="RayCast2D" parent="." unique_id=362791034]
+[node name="n" type="RayCast2D" parent="." unique_id=362791034]
 position = Vector2(0, -8)
 target_position = Vector2(0, -8)
 hit_from_inside = true
 
-[node name="down" type="RayCast2D" parent="." unique_id=1539787751]
+[node name="s" type="RayCast2D" parent="." unique_id=1539787751]
 position = Vector2(0, 8)
 target_position = Vector2(0, 8)
 hit_from_inside = true
 
-[node name="left" type="RayCast2D" parent="." unique_id=1333904518]
+[node name="e" type="RayCast2D" parent="." unique_id=1333904518]
 position = Vector2(-8, 0)
 target_position = Vector2(-8, 0)
 hit_from_inside = true
 
-[node name="right" type="RayCast2D" parent="." unique_id=1574554572]
+[node name="w" type="RayCast2D" parent="." unique_id=1574554572]
 position = Vector2(8, 0)
 target_position = Vector2(8, 0)
+hit_from_inside = true
+
+[node name="nw" type="RayCast2D" parent="." unique_id=1131233147]
+position = Vector2(-8, -8)
+target_position = Vector2(-8, -8)
+hit_from_inside = true
+
+[node name="ne" type="RayCast2D" parent="." unique_id=1348113850]
+position = Vector2(8, -8)
+target_position = Vector2(8, -8)
+hit_from_inside = true
+
+[node name="se" type="RayCast2D" parent="." unique_id=1200345832]
+position = Vector2(8, 8)
+target_position = Vector2(8, 8)
+hit_from_inside = true
+
+[node name="sw" type="RayCast2D" parent="." unique_id=1874211669]
+position = Vector2(-8, 8)
+target_position = Vector2(-8, 8)
 hit_from_inside = true

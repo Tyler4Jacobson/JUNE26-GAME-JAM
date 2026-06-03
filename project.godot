@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 window/size/viewport_width=800
 window/size/viewport_height=600
 
+[editor]
+
+movie_writer/movie_file="C:/Users/tyler/Saved Games/godot/june26-game-jam/videos/output.avi"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

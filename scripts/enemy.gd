@@ -37,7 +37,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	#print(tile_map.get_children())
 	var interval = 0.5
 	# If the player moves, update the path
@@ -70,7 +70,7 @@ func move() -> void:
 	var original_position = path.pop_front()
 	
 	if path.is_empty():
-		print("can't find path")
+		#print("can't find path")
 		return
 		
 	var next_position = path[0]
