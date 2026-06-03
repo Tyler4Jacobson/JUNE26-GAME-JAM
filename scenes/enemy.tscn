@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://ct67ejvdimnl5"]
+[gd_scene format=3 uid="uid://biumn8qgadcdv"]
 
-[ext_resource type="Texture2D" uid="uid://crn6h17ms0vra" path="res://assets/player_art.png" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://cu3b5xwm1ic26" path="res://scripts/player.gd" id="1_s027a"]
+[ext_resource type="Script" uid="uid://blb6jq8f166yr" path="res://scripts/enemy.gd" id="1_md0e3"]
+[ext_resource type="Texture2D" uid="uid://crn6h17ms0vra" path="res://assets/player_art.png" id="2_4ra3w"]
 
 [sub_resource type="Gradient" id="Gradient_g2els"]
 offsets = PackedFloat32Array(0.084134616, 0.3533654, 0.64663464)
@@ -15,21 +15,21 @@ fill_from = Vector2(0.5121528, 0.4982639)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(8, 8)
 
-[node name="player" type="CharacterBody2D" unique_id=956896073]
+[node name="enemy" type="CharacterBody2D" unique_id=956896073]
 z_index = 5
-script = ExtResource("1_s027a")
+script = ExtResource("1_md0e3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=897099604]
+modulate = Color(1, 0.06666667, 0.043137256, 1)
 texture_filter = 1
-texture = ExtResource("1_4flbx")
+texture = ExtResource("2_4ra3w")
 
 [node name="PointLight2D" type="PointLight2D" parent="Sprite2D" unique_id=2080079418]
 color = Color(1, 0.35686275, 0.1764706, 1)
-energy = 3.0
+energy = 2.0
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 texture = SubResource("GradientTexture2D_qhqgy")
-texture_scale = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1278099715]
 shape = SubResource("RectangleShape2D_onrkg")
