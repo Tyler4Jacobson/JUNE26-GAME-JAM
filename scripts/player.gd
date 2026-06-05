@@ -40,7 +40,7 @@ func _physics_process(delta: float) -> void:
 				timer -= interval
 				_move(movement_vector)
 		else:
-			timer -= base_interval
+			timer = base_interval
 			
 func _move(dir: Vector2):
 	global_position += dir * tile_size
