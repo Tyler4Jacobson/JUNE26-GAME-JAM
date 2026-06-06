@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cu3b5xwm1ic26" path="res://scripts/player.gd" id="1_s027a"]
 
 [sub_resource type="Gradient" id="Gradient_g2els"]
-offsets = PackedFloat32Array(0.084134616, 0.3533654, 0.64663464)
+offsets = PackedFloat32Array(0.30526316, 0.3533654, 0.39473686)
 colors = PackedColorArray(1, 1, 1, 1, 0.33894232, 0.33894232, 0.33894232, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qhqgy"]
@@ -24,7 +24,7 @@ texture_filter = 1
 texture = ExtResource("1_4flbx")
 
 [node name="PointLight2D" type="PointLight2D" parent="Sprite2D" unique_id=2080079418]
-color = Color(1, 0.35686275, 0.1764706, 1)
+color = Color(0.305369, 0.6514142, 0.77830833, 1)
 energy = 3.0
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
@@ -45,13 +45,13 @@ target_position = Vector2(0, 8)
 hit_from_inside = true
 
 [node name="e" type="RayCast2D" parent="." unique_id=1333904518]
-position = Vector2(-8, 0)
-target_position = Vector2(-8, 0)
+position = Vector2(8, 0)
+target_position = Vector2(8, 0)
 hit_from_inside = true
 
 [node name="w" type="RayCast2D" parent="." unique_id=1574554572]
-position = Vector2(8, 0)
-target_position = Vector2(8, 0)
+position = Vector2(-8, 0)
+target_position = Vector2(-8, 0)
 hit_from_inside = true
 
 [node name="nw" type="RayCast2D" parent="." unique_id=1131233147]

@@ -3,8 +3,15 @@ extends CharacterBody2D
 const tile_size: Vector2 = Vector2(16,16)
 var sprite_node_pos_tween: Tween
 var timer = 0.0
+@onready var point_light_2d: PointLight2D = $Sprite2D/PointLight2D
 
 func _physics_process(delta: float) -> void:
+	
+	if Input.is_action_pressed("ui_accept"):
+		point_light_2d.enabled = true
+	elif Input.is_action_just_released("ui_accept"): #Input.is_action_just_released("ui_up") or Input.is_action_just_released("ui_down") or Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
+		point_light_2d.enabled = false
+	
 	var base_interval = 0.1
 	var diag_interval = base_interval * sqrt(2)
 	var interval = base_interval
