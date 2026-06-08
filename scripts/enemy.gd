@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 # Check if a cell holds the player or an enemy
 func is_cell_occupied(target_cell: Vector2i) -> bool:
 	for sibling in get_parent().get_children():
-		if sibling == self or sibling == player:
+		if sibling == self:	# or sibling == player
 			continue
 		
 		if not sibling.has_method("move"):
@@ -81,9 +81,9 @@ func move() -> void:
 		return
 	
 	# stop next to player
-	if next_position == target_cell:
-		is_moving = true
-		return
+	#if next_position == target_cell:
+		#is_moving = true
+		#return
 	
 	global_position = tile_map.map_to_local(next_position)
 	sprite_2d.global_position = tile_map.map_to_local(original_position)

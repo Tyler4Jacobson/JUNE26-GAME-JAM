@@ -17,6 +17,7 @@ size = Vector2(8, 8)
 
 [node name="player" type="CharacterBody2D" unique_id=956896073]
 z_index = 5
+collision_mask = 2
 script = ExtResource("1_s027a")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=897099604]
@@ -24,6 +25,7 @@ texture_filter = 1
 texture = ExtResource("1_4flbx")
 
 [node name="PointLight2D" type="PointLight2D" parent="Sprite2D" unique_id=2080079418]
+enabled = false
 color = Color(0.305369, 0.6514142, 0.77830833, 1)
 energy = 3.0
 shadow_enabled = true
