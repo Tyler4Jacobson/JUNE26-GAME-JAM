@@ -4,6 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://ct67ejvdimnl5" path="res://scenes/player.tscn" id="2_q8s1k"]
 [ext_resource type="PackedScene" uid="uid://biumn8qgadcdv" path="res://scenes/enemy.tscn" id="3_mm0a5"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kddj0"]
+blend_mode = 3
+light_mode = 2
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_cb5na"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
@@ -168,8 +172,9 @@ sources/1 = SubResource("TileSetScenesCollectionSource_lnu2h")
 sources/2 = SubResource("TileSetScenesCollectionSource_iywne")
 
 [node name="playground" type="TileMapLayer" unique_id=1096450927]
-modulate = Color(0.7953939, 0.79539394, 0.7953939, 1)
+self_modulate = Color(0.13174233, 0.13174233, 0.13174233, 1)
 texture_filter = 1
+material = SubResource("CanvasItemMaterial_kddj0")
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD//wUAAAAAAAQAAAAAAAUAAAABAAQAAAABAAUAAAACAAQAAAADAAUAAAAAAAQAAAAEAAUAAAABAAQAAAAFAAUAAAACAAQAAAAHAAUAAAAAAAQAAAAIAAUAAAABAAQAAAAJAAUAAAACAAQAAAALAAUAAAAAAAQAAAAMAAUAAAABAAQAAAANAAUAAAACAAQAAAAEAAAAAQAAAAAAAQD7/wUAAAAAAAQAAAD8/wUAAAABAAQAAAD9/wUAAAACAAQAAAAEAAoAAgAAAAAAAgACAAoAAgAAAAAAAgAGAAoAAgAAAAAAAgA=")
 tile_set = SubResource("TileSet_cb66b")

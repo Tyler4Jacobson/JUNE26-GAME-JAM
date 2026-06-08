@@ -6,17 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://biumn8qgadcdv" path="res://scenes/enemy.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://b3qrmj7ar141u" path="res://scenes/playground.tscn" id="5_iywne"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_iywne"]
+blend_mode = 3
+light_mode = 2
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_cb5na"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
 agent_radius = 0.0
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lnu2h"]
-polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lbhrr"]
-polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_iywne"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -39,12 +37,6 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
 agent_radius = 0.0
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_p57ef"]
-polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_u5sy4"]
-polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gee14"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
@@ -60,13 +52,10 @@ agent_radius = 0.0
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dis88"]
 texture = ExtResource("2_dis88")
 0:0/0 = 0
-0:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_lnu2h")
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_cb5na")
 1:0/0 = 0
-1:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_p57ef")
 1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_cb5na")
 2:0/0 = 0
-2:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_u5sy4")
 2:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_cb5na")
 4:0/0 = 0
 4:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_gee14")
@@ -88,13 +77,10 @@ texture = ExtResource("2_dis88")
 16:0/0 = 0
 16:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_3w2km")
 0:1/0 = 0
-0:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_lbhrr")
 0:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_cb5na")
 1:1/0 = 0
-1:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_lbhrr")
 1:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_cb5na")
 2:1/0 = 0
-2:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_lbhrr")
 2:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_cb5na")
 4:1/0 = 0
 4:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_gee14")
@@ -115,13 +101,10 @@ texture = ExtResource("2_dis88")
 15:1/0 = 0
 16:1/0 = 0
 0:2/0 = 0
-0:2/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_lbhrr")
 0:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_cb5na")
 1:2/0 = 0
-1:2/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_lbhrr")
 1:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_cb5na")
 2:2/0 = 0
-2:2/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_lbhrr")
 2:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_cb5na")
 4:2/0 = 0
 4:2/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_gee14")
@@ -242,14 +225,13 @@ script = ExtResource("1_5gf0t")
 [node name="ground_layer" type="TileMapLayer" parent="." unique_id=1800278472]
 modulate = Color(0.37716255, 0.37716258, 0.37716255, 1)
 texture_filter = 1
+material = SubResource("CanvasItemMaterial_iywne")
 use_parent_material = true
 tile_set = SubResource("TileSet_cb66b")
 
 [node name="playground" parent="." unique_id=1096450927 instance=ExtResource("5_iywne")]
+modulate = Color(0.10822468, 0.10822456, 0.10822468, 1)
 tile_map_data = PackedByteArray()
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=844864713]
-zoom = Vector2(2.5, 2.35)
 
 [node name="ScanCover" type="TileMapLayer" parent="." unique_id=1043679925]
 z_index = 10

@@ -13,8 +13,9 @@ func _ready() -> void:
 	#
 	#
 	$ScanCover.hide()
-	var size_x = randi_range(6, 10)
-	var size_y = randi_range(4, 8)
+	var size_x = 20#randi_range(6, 10)
+	var size_y = 10#randi_range(4, 8)
+	
 	initialize_grid(size_x, size_y)
 	procedural.randomize_grid(ground_layer, randf_range(0.4, 0.6))
 	procedural.fill_holes(ground_layer)
@@ -82,13 +83,13 @@ func get_valid_spawn_points() -> Array[Vector2i]:
 			
 	return valid_tiles
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-	#if Input.is_action_pressed("ui_accept") and $ScanCover.visible == true:
-		#$PointLight2D.enabled = true
-	#elif Input.is_action_just_released("ui_accept") and $ScanCover.visible == false: #Input.is_action_just_released("ui_up") or Input.is_action_just_released("ui_down") or Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
-		#$PointLight2D.enabled = false
+ #Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(_delta: float) -> void:
+	#pass
+	##if Input.is_action_pressed("ui_accept") and $ScanCover.visible == true:
+		##$PointLight2D.enabled = true
+	##elif Input.is_action_just_released("ui_accept") and $ScanCover.visible == false: #Input.is_action_just_released("ui_up") or Input.is_action_just_released("ui_down") or Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
+		##$PointLight2D.enabled = false
 
 func initialize_grid(size_x: int, size_y: int):
 	for x in range(size_x*-1, size_x):

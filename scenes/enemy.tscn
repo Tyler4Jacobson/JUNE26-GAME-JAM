@@ -30,6 +30,8 @@ texture_filter = 1
 texture = ExtResource("2_4ra3w")
 
 [node name="PointLight2D" type="PointLight2D" parent="Sprite2D" unique_id=2080079418]
+visible = false
+enabled = false
 color = Color(1, 0.35686275, 0.1764706, 1)
 energy = 2.0
 shadow_enabled = true
