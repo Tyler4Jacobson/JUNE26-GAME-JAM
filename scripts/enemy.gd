@@ -1,39 +1,14 @@
 extends CharacterBody2D
 
-@onready var tile_map = $".."
 @onready var sprite_2d = $Sprite2D
-@onready var player = $"../player"
 
+var tile_map: TileMapLayer
+var player: CharacterBody2D
 var is_moving = false
 var astar_grid: AStarGrid2D
 const tile_size: Vector2 = Vector2(16,16)
 var sprite_node_pos_tween: Tween
 var timer = 0.0
-
-# Called when the node enters the scene tree for the first time.
-# Initialize AStarGrid, used for pathfinding, and fill in impassible tiles
-func _ready() -> void:
-	astar_grid = AStarGrid2D.new()
-	astar_grid.region = tile_map.get_used_rect()
-	astar_grid.cell_size = Vector2(32,32)
-	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
-	astar_grid.update()
-	
-	var region_size = astar_grid.region.size			# Total size of tile_map
-	var region_position = astar_grid.region.position 	# Origin position of the tile_map (upper left)
-	
-	# Scans through all the tiles in the tile_map
-	for x in region_size.x:
-		for y in region_size.y:
-			var tile_position = Vector2i(
-				x + region_position.x,
-				y + region_position.y
-			)
-			
-			# Check if tile is impassible
-			var tile_data = tile_map.get_cell_tile_data(tile_position)
-			if tile_data != null:
-				astar_grid.set_point_solid(tile_position)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -49,16 +24,41 @@ func _physics_process(delta: float) -> void:
 			timer -= interval
 		return
 	move()
+
+# Check if a cell holds the player or an enemy
+func is_cell_occupied(target_cell: Vector2i) -> bool:
+	for sibling in get_parent().get_children():
+		if sibling == self or sibling == player:
+			continue
+		
+		if not sibling.has_method("move"):
+			continue
+		
+		# real-world position into grid coordinates
+		var sibling_local = tile_map.to_local(sibling.global_position)
+		var sibling_cell = tile_map.local_to_map(sibling_local)
+		
+		# occupied
+		if sibling_cell == target_cell:
+			return true
 	
+	# not occupied
+	return false
+
 # Move enemy one step toward player along AStar Path
 func move() -> void:
-	if player == null:
-		printerr("ERROR: enemy has no player to target")
+	if player == null or astar_grid == null or tile_map == null:
+		return
 	
-	var path = astar_grid.get_id_path(
-		tile_map.local_to_map(global_position),
-		tile_map.local_to_map(player.global_position)
-	)
+	# global positions into tile_map's local space
+	var local_enemy_pos = tile_map.to_local(global_position)
+	var local_player_pos = tile_map.to_local(player.global_position)
+	
+	# grid coordinates
+	var start_cell = tile_map.local_to_map(local_enemy_pos)
+	var target_cell = tile_map.local_to_map(local_player_pos)
+	
+	var path = astar_grid.get_id_path(start_cell, target_cell)
 	
 	# Stop movement if player is out of range
 	# TODO: Maybe a smaller 'agro' range, but then a greater range that it will continue to follow for
@@ -74,6 +74,16 @@ func move() -> void:
 		return
 		
 	var next_position = path[0]
+	
+	# stop next to other enemies
+	if is_cell_occupied(next_position):
+		is_moving = true
+		return
+	
+	# stop next to player
+	if next_position == target_cell:
+		is_moving = true
+		return
 	
 	global_position = tile_map.map_to_local(next_position)
 	sprite_2d.global_position = tile_map.map_to_local(original_position)
