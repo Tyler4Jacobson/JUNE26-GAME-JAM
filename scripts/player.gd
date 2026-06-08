@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const tile_size: Vector2 = Vector2(16,16)
 var sprite_node_pos_tween: Tween
+var camera_pos_tween: Tween
 var timer = 0.0
 
 var small_light_size = Vector2(0.5, 0.5)
@@ -64,13 +65,18 @@ func _physics_process(delta: float) -> void:
 func _move(dir: Vector2):
 	global_position += dir * tile_size
 	$Sprite2D.global_position -= dir * tile_size
+	$Camera2D.global_position -= dir * tile_size
 	
 	if sprite_node_pos_tween:
 		sprite_node_pos_tween.kill()
+	if camera_pos_tween:
+		camera_pos_tween.kill()
 	sprite_node_pos_tween = create_tween()
+	camera_pos_tween = create_tween()
 	sprite_node_pos_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+	camera_pos_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	sprite_node_pos_tween.tween_property($Sprite2D, "global_position", global_position, 0.185)
-	#sprite_node_pos_tween.tween_property($PointLight2D, "global_position", global_position, 0.185)
+	camera_pos_tween.tween_property($Camera2D, "global_position", global_position, 0.25)
 
 func update_light(on: bool) -> void:
 	if (on):

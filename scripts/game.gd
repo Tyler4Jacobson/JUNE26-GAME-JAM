@@ -13,8 +13,8 @@ func _ready() -> void:
 	#
 	#
 	$ScanCover.hide()
-	var size_x = 20#randi_range(6, 10)
-	var size_y = 10#randi_range(4, 8)
+	var size_x = 100#randi_range(6, 10)
+	var size_y = 50#randi_range(4, 8)
 	
 	initialize_grid(size_x, size_y)
 	procedural.randomize_grid(ground_layer, randf_range(0.4, 0.6))

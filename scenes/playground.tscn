@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://biumn8qgadcdv" path="res://scenes/enemy.tscn" id="3_mm0a5"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kddj0"]
-blend_mode = 3
 light_mode = 2
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_cb5na"]
@@ -172,6 +171,7 @@ sources/1 = SubResource("TileSetScenesCollectionSource_lnu2h")
 sources/2 = SubResource("TileSetScenesCollectionSource_iywne")
 
 [node name="playground" type="TileMapLayer" unique_id=1096450927]
+modulate = Color(0.07762883, 0.07762881, 0.07762881, 1)
 self_modulate = Color(0.13174233, 0.13174233, 0.13174233, 1)
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_kddj0")

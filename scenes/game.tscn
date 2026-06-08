@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://b3qrmj7ar141u" path="res://scenes/playground.tscn" id="5_iywne"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_iywne"]
-blend_mode = 3
 light_mode = 2
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_cb5na"]

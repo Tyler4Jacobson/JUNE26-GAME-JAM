@@ -35,7 +35,7 @@ shadow_filter = 2
 texture = SubResource("GradientTexture2D_qhqgy")
 texture_scale = 3.0
 
-[node name="Camera2D" type="Camera2D" parent="Sprite2D" unique_id=1827686620]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1827686620]
 zoom = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1278099715]
