@@ -13,8 +13,8 @@ func _ready() -> void:
 	#
 	#
 	$ScanCover.hide()
-	var size_x = 100#randi_range(6, 10)
-	var size_y = 50#randi_range(4, 8)
+	var size_x = randi_range(10, 50)
+	var size_y = randi_range(10, 50)
 	
 	initialize_grid(size_x, size_y)
 	procedural.randomize_grid(ground_layer, randf_range(0.4, 0.6))
@@ -35,7 +35,7 @@ func _ready() -> void:
 		playground.set_cell(player_location, 1, atlas_coords, 1)
 	
 	#place enemies
-	var enemy_count = 3
+	var enemy_count = 25
 	for x in range(enemy_count):
 		if not safe_spots.is_empty(): 
 			var location = safe_spots.pop_back()
@@ -44,8 +44,13 @@ func _ready() -> void:
 	await get_tree().process_frame
 	assign_data_to_spawned_scenes()
 	
-	#place collectibles???
-	#use vvvvvvv to have options on where to place all of the above
+	#place collectibles
+	var coin_count = 50
+	for x in range(coin_count):
+		if not safe_spots.is_empty():
+			var location = safe_spots.pop_back()
+			playground.set_cell(location, 3, atlas_coords, 3)
+	
 	#procedural.get_clear_spaces(ground_layer)
 
 # Setup of AStarGrid
@@ -61,7 +66,6 @@ func build_pathfinding_grid() -> void:
 		var tile_data = ground_layer.get_cell_tile_data(cell_pos)
 		if tile_data != null and tile_data.get_custom_data("is_wall") == true:
 			global_astar.set_point_solid(cell_pos)
-
 
 func assign_data_to_spawned_scenes() -> void:
 	var spawned_player = playground.get_node_or_null("player") 

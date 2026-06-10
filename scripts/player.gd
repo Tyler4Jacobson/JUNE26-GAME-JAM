@@ -11,10 +11,12 @@ var small_light_color = Color(0.913, 0.502, 0.369)
 var big_light_size = Vector2(3, 3)
 var big_light_color = Color(0.992, 0.447, 0.035)
 
+@onready var score_label: Label = $Camera2D/score
 @onready var point_light_2d: PointLight2D = $Sprite2D/PointLight2D
 
 func _ready() -> void:
 	update_light(false)
+	display_score()
 	
 	# TODO: set camera bounds
 
@@ -25,6 +27,10 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_just_released("ui_accept"): #Input.is_action_just_released("ui_up") or Input.is_action_just_released("ui_down") or Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
 		update_light(false)
 	
+	display_score()
+	movement_manager(delta)
+	
+func movement_manager(delta: float) -> void:
 	var base_interval = 0.1
 	var diag_interval = base_interval * sqrt(2)
 	var interval = base_interval
@@ -85,3 +91,6 @@ func update_light(on: bool) -> void:
 	else:
 		point_light_2d.scale = small_light_size
 		point_light_2d.color = small_light_color
+		
+func display_score() -> void:
+	score_label.text = str(game_manager.get_score())
