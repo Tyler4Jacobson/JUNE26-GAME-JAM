@@ -12,8 +12,11 @@ func _ready() -> void:
 	#Note this is hide() right now. This was so I could see the grid. Probably change back to show() ?
 	#
 	#
+	
+	game_manager.score = 0
+	
 	$ScanCover.hide()
-	var size_x = 100#randi_range(6, 10)
+	var size_x = 10#randi_range(6, 10)
 	var size_y = 50#randi_range(4, 8)
 	
 	initialize_grid(size_x, size_y)
@@ -44,9 +47,18 @@ func _ready() -> void:
 	await get_tree().process_frame
 	assign_data_to_spawned_scenes()
 	
-	#place collectibles???
+	#place collectibles
+	var coin_count = 50
+	for x in range(coin_count):
+		if not safe_spots.is_empty(): 
+			var location = safe_spots.pop_back()
+			playground.set_cell(location, 3, atlas_coords, 3)
+			
 	#use vvvvvvv to have options on where to place all of the above
 	#procedural.get_clear_spaces(ground_layer)
+	
+	await get_tree().process_frame
+	assign_data_to_spawned_scenes()
 
 # Setup of AStarGrid
 func build_pathfinding_grid() -> void:

@@ -12,6 +12,11 @@ gradient = SubResource("Gradient_g2els")
 fill = 1
 fill_from = Vector2(0.5121528, 0.4982639)
 
+[sub_resource type="SystemFont" id="SystemFont_g2els"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qhqgy"]
+font = SubResource("SystemFont_g2els")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(8, 8)
 
@@ -19,6 +24,7 @@ size = Vector2(8, 8)
 self_modulate = Color(0.44755095, 0.44755095, 0.44755095, 1)
 top_level = true
 z_index = 5
+collision_layer = 3
 script = ExtResource("1_s027a")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=897099604]
@@ -37,6 +43,16 @@ texture_scale = 3.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1827686620]
 zoom = Vector2(2, 2)
+
+[node name="score" type="Label" parent="Camera2D" unique_id=556227429]
+texture_filter = 1
+offset_left = 159.0
+offset_top = -149.0
+offset_right = 199.0
+offset_bottom = -126.0
+text = "0"
+label_settings = SubResource("LabelSettings_qhqgy")
+horizontal_alignment = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1278099715]
 shape = SubResource("RectangleShape2D_onrkg")

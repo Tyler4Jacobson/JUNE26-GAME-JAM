@@ -12,26 +12,28 @@ var big_light_size = Vector2(3, 3)
 var big_light_color = Color(0.992, 0.447, 0.035)
 
 @onready var point_light_2d: PointLight2D = $Sprite2D/PointLight2D
+@onready var score: Label = $Camera2D/score
 
 func _ready() -> void:
 	update_light(false)
-	
-	# TODO: set camera bounds
+	display_score()
 
 func _physics_process(delta: float) -> void:
-	
 	if Input.is_action_pressed("ui_accept"):
 		update_light(true)
 	elif Input.is_action_just_released("ui_accept"): #Input.is_action_just_released("ui_up") or Input.is_action_just_released("ui_down") or Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
 		update_light(false)
 	
+	movement_manager(delta)
+	display_score()
+		
+func movement_manager(delta: float) -> void:
 	var base_interval = 0.1
 	var diag_interval = base_interval * sqrt(2)
 	var interval = base_interval
 	var movement_vector = Vector2.ZERO
 	
 	timer += delta
-	#print(timer, interval)
 	# Governer slows down movement
 	if timer >= base_interval:
 		if Input.is_action_pressed("ui_up") and Input.is_action_pressed("ui_left") and !$nw.is_colliding():
@@ -85,3 +87,6 @@ func update_light(on: bool) -> void:
 	else:
 		point_light_2d.scale = small_light_size
 		point_light_2d.color = small_light_color
+		
+func display_score() -> void:
+	score.text = str(game_manager.score)

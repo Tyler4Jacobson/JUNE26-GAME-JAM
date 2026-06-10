@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://caknk3fil4cw1"]
+
+[ext_resource type="Script" uid="uid://b68aj0qb7bvu5" path="res://scripts/ui.gd" id="1_nt7q6"]
+
+[sub_resource type="SystemFont" id="SystemFont_xlq6p"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_nt7q6"]
+font = SubResource("SystemFont_xlq6p")
+font_size = 24
+
+[node name="ui" type="Control" unique_id=233448983]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 800.0
+offset_bottom = 600.0
+script = ExtResource("1_nt7q6")
+
+[node name="score_container" type="MarginContainer" parent="." unique_id=1847481431]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.0
+offset_top = -17.0
+offset_right = 7.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="score_label" type="Label" parent="score_container" unique_id=415756492]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_nt7q6")
+horizontal_alignment = 2

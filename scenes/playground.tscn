@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ql6py4k1qe7r" path="res://assets/tiles_atlas.png" id="1_kddj0"]
 [ext_resource type="PackedScene" uid="uid://ct67ejvdimnl5" path="res://scenes/player.tscn" id="2_q8s1k"]
 [ext_resource type="PackedScene" uid="uid://biumn8qgadcdv" path="res://scenes/enemy.tscn" id="3_mm0a5"]
+[ext_resource type="PackedScene" uid="uid://c85h3f1jrnded" path="res://scenes/coin.tscn" id="4_q8s1k"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kddj0"]
 light_mode = 2
@@ -162,6 +163,10 @@ scenes/1/scene = ExtResource("2_q8s1k")
 resource_name = "enemy"
 scenes/2/scene = ExtResource("3_mm0a5")
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_mm0a5"]
+resource_name = "coin"
+scenes/3/scene = ExtResource("4_q8s1k")
+
 [sub_resource type="TileSet" id="TileSet_cb66b"]
 occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
@@ -169,6 +174,7 @@ navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_dis88")
 sources/1 = SubResource("TileSetScenesCollectionSource_lnu2h")
 sources/2 = SubResource("TileSetScenesCollectionSource_iywne")
+sources/3 = SubResource("TileSetScenesCollectionSource_mm0a5")
 
 [node name="playground" type="TileMapLayer" unique_id=1096450927]
 modulate = Color(0.07762883, 0.07762881, 0.07762881, 1)
