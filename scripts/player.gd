@@ -10,11 +10,13 @@ var small_light_color = Color(0.913, 0.502, 0.369)
 var big_light_size = Vector2(3, 3)
 var big_light_color = Color(0.992, 0.447, 0.035)
 
+@onready var score_label: Label = $Camera2D/score
 @onready var point_light_2d: PointLight2D = $Sprite2D/PointLight2D
 @onready var light_area: Area2D = $Sprite2D/Area2D
 
 func _ready() -> void:
 	update_light(false)
+	display_score()
 	
 	# TODO: set camera bounds
 
@@ -46,6 +48,10 @@ func _physics_process(delta: float) -> void:
 	if input_dir == Vector2.ZERO:
 		return
 	
+	display_score()
+	movement_manager(delta)
+	
+func movement_manager(delta: float) -> void:
 	var base_interval = 0.1
 	var diag_interval = base_interval * sqrt(2)
 	var interval_to_use = base_interval
@@ -102,13 +108,18 @@ func _physics_process(delta: float) -> void:
 func _move(dir: Vector2):
 	global_position += dir * tile_size
 	$Sprite2D.global_position -= dir * tile_size
+	$Camera2D.global_position -= dir * tile_size
 	
 	if sprite_node_pos_tween:
 		sprite_node_pos_tween.kill()
+	if camera_pos_tween:
+		camera_pos_tween.kill()
 	sprite_node_pos_tween = create_tween()
+	camera_pos_tween = create_tween()
 	sprite_node_pos_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+	camera_pos_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	sprite_node_pos_tween.tween_property($Sprite2D, "global_position", global_position, 0.185)
-	#sprite_node_pos_tween.tween_property($PointLight2D, "global_position", global_position, 0.185)
+	camera_pos_tween.tween_property($Camera2D, "global_position", global_position, 0.25)
 
 func update_light(on: bool) -> void:
 	if (on):
@@ -117,3 +128,6 @@ func update_light(on: bool) -> void:
 	else:
 		point_light_2d.scale = small_light_size
 		point_light_2d.color = small_light_color
+		
+func display_score() -> void:
+	score_label.text = str(game_manager.get_score())

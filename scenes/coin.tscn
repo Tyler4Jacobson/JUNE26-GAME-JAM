@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dvjkburcx7lss"]
+
+[ext_resource type="Script" uid="uid://87d4v70m7scj" path="res://scripts/coin.gd" id="1_i64fm"]
+[ext_resource type="Texture2D" uid="uid://bqbtnth3bvey3" path="res://assets/Idle.png" id="2_i64fm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11l1o"]
+atlas = ExtResource("2_i64fm")
+region = Rect2(17, 0, 32, 32)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_i64fm"]
+light_mode = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i64fm"]
+size = Vector2(8, 8)
+
+[node name="Coin" type="Area2D" unique_id=377994511]
+collision_mask = 2
+script = ExtResource("1_i64fm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1751749721]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_11l1o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2040189817]
+material = SubResource("CanvasItemMaterial_i64fm")
+shape = SubResource("RectangleShape2D_i64fm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
