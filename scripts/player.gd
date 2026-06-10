@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 const tile_size: Vector2 = Vector2(16,16)
 var sprite_node_pos_tween: Tween
-var move_cooldown: float = 0.0
+var camera_pos_tween: Tween
+var timer = 0.0
 
 var small_light_size = Vector2(0.5, 0.5)
 var small_light_color = Color(0.913, 0.502, 0.369)
@@ -12,7 +13,6 @@ var big_light_color = Color(0.992, 0.447, 0.035)
 
 @onready var score_label: Label = $Camera2D/score
 @onready var point_light_2d: PointLight2D = $Sprite2D/PointLight2D
-@onready var light_area: Area2D = $Sprite2D/Area2D
 
 func _ready() -> void:
 	update_light(false)
@@ -24,29 +24,8 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("ui_accept"):
 		update_light(true)
-		var space_state = get_world_2d().direct_space_state
-		var targets = light_area.get_overlapping_bodies()
-		for target in targets:
-			var query = PhysicsRayQueryParameters2D.create(global_position, target.global_position)
-			query.exclude = [self.get_rid()]
-			var result = space_state.intersect_ray(query)
-			if target.has_method("apply_stun"): # and result.collider == target:
-				target.apply_stun(2.0)
 	elif Input.is_action_just_released("ui_accept"): #Input.is_action_just_released("ui_up") or Input.is_action_just_released("ui_down") or Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
 		update_light(false)
-	
-	if move_cooldown > 0:
-		move_cooldown -= delta
-		return
-		
-	
-	
-	var input_dir = Vector2.ZERO
-	input_dir.x = Input.get_axis("ui_left", "ui_right")
-	input_dir.y = Input.get_axis("ui_up", "ui_down")
-	
-	if input_dir == Vector2.ZERO:
-		return
 	
 	display_score()
 	movement_manager(delta)
@@ -54,57 +33,41 @@ func _physics_process(delta: float) -> void:
 func movement_manager(delta: float) -> void:
 	var base_interval = 0.1
 	var diag_interval = base_interval * sqrt(2)
-	var interval_to_use = base_interval
+	var interval = base_interval
 	var movement_vector = Vector2.ZERO
 	
-	var free_n = !$n.is_colliding()
-	var free_s = !$s.is_colliding()
-	var free_e = !$e.is_colliding()
-	var free_w = !$w.is_colliding()
-	
-	# diagonal
-	if input_dir.x != 0 and input_dir.y != 0:
-		var diag_free = false
-		interval_to_use = diag_interval
-		
-		if input_dir == Vector2(-1, -1) and !$nw.is_colliding() and free_n and free_w:
-			diag_free = true
-		elif input_dir == Vector2(1, -1) and !$ne.is_colliding() and free_n and free_e:
-			diag_free = true
-		elif input_dir == Vector2(-1, 1) and !$sw.is_colliding() and free_s and free_w:
-			diag_free = true
-		elif input_dir == Vector2(1, 1) and !$se.is_colliding() and free_s and free_e:
-			diag_free = true
-			
-		if diag_free:
-			movement_vector = input_dir
-			interval_to_use = diag_interval
+	timer += delta
+	#print(timer, interval)
+	# Governer slows down movement
+	if timer >= base_interval:
+		if Input.is_action_pressed("ui_up") and Input.is_action_pressed("ui_left") and !$nw.is_colliding():
+			movement_vector = Vector2(-1, -1) # move northwest
+			interval = diag_interval
+		elif Input.is_action_pressed("ui_up") and Input.is_action_pressed("ui_right") and !$ne.is_colliding():
+			movement_vector = Vector2(1, -1) # move northeast
+			interval = diag_interval
+		elif Input.is_action_pressed("ui_down") and Input.is_action_pressed("ui_left") and !$sw.is_colliding():
+			movement_vector = Vector2(-1, 1) # move southwest
+			interval = diag_interval
+		elif Input.is_action_pressed("ui_down") and Input.is_action_pressed("ui_right") and !$se.is_colliding():
+			movement_vector = Vector2(1, 1) # move southeast
+			interval = diag_interval
+		elif Input.is_action_pressed("ui_up") and !$n.is_colliding():
+			movement_vector = Vector2(0, -1)
+		elif Input.is_action_pressed("ui_down") and !$s.is_colliding():
+			movement_vector = Vector2(0, 1)
+		elif Input.is_action_pressed("ui_left") and !$w.is_colliding():
+			movement_vector = Vector2(-1, 0)
+		elif Input.is_action_pressed("ui_right") and !$e.is_colliding():
+			movement_vector = Vector2(1, 0)
+				
+		if movement_vector != Vector2.ZERO:
+			if timer >= interval:
+				timer -= interval
+				_move(movement_vector)
 		else:
-			# if diagonal is blocked
-			if input_dir.x < 0 and free_w:
-				movement_vector = Vector2(-1, 0)
-			elif input_dir.x > 0 and free_e:
-				movement_vector = Vector2(1, 0)
-			elif input_dir.y < 0 and free_n:
-				movement_vector = Vector2(0, -1)
-			elif input_dir.y > 0 and free_s:
-				movement_vector = Vector2(0, 1)
-	
-	# orthogonal
-	elif input_dir.x < 0 and free_w:
-		movement_vector = Vector2(-1, 0)
-	elif input_dir.x > 0 and free_e:
-		movement_vector = Vector2(1, 0)
-	elif input_dir.y < 0 and free_n:
-		movement_vector = Vector2(0, -1)
-	elif input_dir.y > 0 and free_s:
-		movement_vector = Vector2(0, 1)
-	
-	# move and set cooldown
-	if movement_vector != Vector2.ZERO:
-		move_cooldown = interval_to_use
-		_move(movement_vector)
-		
+			timer = base_interval
+			
 func _move(dir: Vector2):
 	global_position += dir * tile_size
 	$Sprite2D.global_position -= dir * tile_size
