@@ -9,12 +9,18 @@ var astar_grid: AStarGrid2D
 const tile_size: Vector2 = Vector2(16,16)
 var sprite_node_pos_tween: Tween
 var timer = 0.0
+var stun_timer: float = 0.0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	#print(tile_map.get_children())
 	var interval = 0.5
+	
+	# check if stunned
+	if stun_timer > 0:
+		stun_timer -= delta
+	
 	# If the player moves, update the path
 	# TODO: This feels really cheap and messy
 	if is_moving:
@@ -23,7 +29,9 @@ func _physics_process(delta: float) -> void:
 			is_moving = false
 			timer -= interval
 		return
-	move()
+	
+	if stun_timer <= 0:
+		move()
 
 # Check if a cell holds the player or an enemy
 func is_cell_occupied(target_cell: Vector2i) -> bool:
@@ -98,3 +106,6 @@ func move() -> void:
 	#print("next_position = ", path[0])
 	
 	is_moving = true
+	
+func apply_stun(duration: float) -> void:
+	stun_timer = max(stun_timer, duration)

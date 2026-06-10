@@ -12,8 +12,8 @@ gradient = SubResource("Gradient_g2els")
 fill = 1
 fill_from = Vector2(0.5121528, 0.4982639)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
-size = Vector2(8, 8)
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
+radius = 62.072536
 
 [node name="player" type="CharacterBody2D" unique_id=956896073]
 self_modulate = Color(0.44755095, 0.44755095, 0.44755095, 1)
@@ -38,8 +38,10 @@ texture_scale = 3.0
 [node name="Camera2D" type="Camera2D" parent="Sprite2D" unique_id=1827686620]
 zoom = Vector2(2, 2)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1278099715]
-shape = SubResource("RectangleShape2D_onrkg")
+[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=1318856378]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=1278099715]
+shape = SubResource("CircleShape2D_g2els")
 
 [node name="n" type="RayCast2D" parent="." unique_id=362791034]
 position = Vector2(0, -8)
