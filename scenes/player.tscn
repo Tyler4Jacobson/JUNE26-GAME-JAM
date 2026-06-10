@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cu3b5xwm1ic26" path="res://scripts/player.gd" id="1_s027a"]
 
 [sub_resource type="Gradient" id="Gradient_g2els"]
-offsets = PackedFloat32Array(0.30526316, 0.3533654, 0.39473686)
+offsets = PackedFloat32Array(0.41558442, 0.5670996, 0.6839827)
 colors = PackedColorArray(1, 1, 1, 1, 0.33894232, 0.33894232, 0.33894232, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qhqgy"]
@@ -13,7 +13,7 @@ fill = 1
 fill_from = Vector2(0.5121528, 0.4982639)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
-radius = 62.072536
+radius = 97.25225
 
 [node name="player" type="CharacterBody2D" unique_id=956896073]
 self_modulate = Color(0.44755095, 0.44755095, 0.44755095, 1)

@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 			var query = PhysicsRayQueryParameters2D.create(global_position, target.global_position)
 			query.exclude = [self.get_rid()]
 			var result = space_state.intersect_ray(query)
-			if target.has_method("apply_stun") and result.collider == target:
+			if target.has_method("apply_stun"): # and result.collider == target:
 				target.apply_stun(2.0)
 	elif Input.is_action_just_released("ui_accept"): #Input.is_action_just_released("ui_up") or Input.is_action_just_released("ui_down") or Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
 		update_light(false)

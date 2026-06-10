@@ -55,6 +55,7 @@ func is_cell_occupied(target_cell: Vector2i) -> bool:
 
 # Move enemy one step toward player along AStar Path
 func move() -> void:
+	sprite_2d.modulate = Color(1, 0.06, 0.04, 1)
 	if player == null or astar_grid == null or tile_map == null:
 		return
 	
@@ -109,3 +110,4 @@ func move() -> void:
 	
 func apply_stun(duration: float) -> void:
 	stun_timer = max(stun_timer, duration)
+	sprite_2d.modulate = Color(0, 0, 1, 1)
