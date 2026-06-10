@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://blb6jq8f166yr" path="res://scripts/enemy.gd" id="1_md0e3"]
 [ext_resource type="Texture2D" uid="uid://crn6h17ms0vra" path="res://assets/player_art.png" id="2_4ra3w"]
+[ext_resource type="PackedScene" uid="uid://c8hn8cc7iwage" path="res://scenes/killzone.tscn" id="3_4ra3w"]
 
 [sub_resource type="Gradient" id="Gradient_g2els"]
-offsets = PackedFloat32Array(0.084134616, 0.3533654, 0.64663464)
+offsets = PackedFloat32Array(0, 0.23728813, 0.44067797)
 colors = PackedColorArray(1, 1, 1, 1, 0.33894232, 0.33894232, 0.33894232, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qhqgy"]
@@ -15,8 +16,12 @@ fill_from = Vector2(0.5121528, 0.4982639)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(8, 8)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ra3w"]
+size = Vector2(8, 8)
+
 [node name="enemy" type="CharacterBody2D" unique_id=956896073]
 z_index = 5
+collision_mask = 2
 script = ExtResource("1_md0e3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=897099604]
@@ -25,6 +30,8 @@ texture_filter = 1
 texture = ExtResource("2_4ra3w")
 
 [node name="PointLight2D" type="PointLight2D" parent="Sprite2D" unique_id=2080079418]
+visible = false
+enabled = false
 color = Color(1, 0.35686275, 0.1764706, 1)
 energy = 2.0
 shadow_enabled = true
@@ -53,3 +60,8 @@ hit_from_inside = true
 position = Vector2(8, 0)
 target_position = Vector2(8, 0)
 hit_from_inside = true
+
+[node name="killzone" parent="." unique_id=529712816 instance=ExtResource("3_4ra3w")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone" unique_id=235011126]
+shape = SubResource("RectangleShape2D_4ra3w")

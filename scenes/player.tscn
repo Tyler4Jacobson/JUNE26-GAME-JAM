@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cu3b5xwm1ic26" path="res://scripts/player.gd" id="1_s027a"]
 
 [sub_resource type="Gradient" id="Gradient_g2els"]
-offsets = PackedFloat32Array(0.084134616, 0.3533654, 0.64663464)
+offsets = PackedFloat32Array(0.30526316, 0.3533654, 0.39473686)
 colors = PackedColorArray(1, 1, 1, 1, 0.33894232, 0.33894232, 0.33894232, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qhqgy"]
@@ -16,6 +16,8 @@ fill_from = Vector2(0.5121528, 0.4982639)
 size = Vector2(8, 8)
 
 [node name="player" type="CharacterBody2D" unique_id=956896073]
+self_modulate = Color(0.44755095, 0.44755095, 0.44755095, 1)
+top_level = true
 z_index = 5
 script = ExtResource("1_s027a")
 
@@ -24,12 +26,17 @@ texture_filter = 1
 texture = ExtResource("1_4flbx")
 
 [node name="PointLight2D" type="PointLight2D" parent="Sprite2D" unique_id=2080079418]
-color = Color(1, 0.35686275, 0.1764706, 1)
-energy = 3.0
+scale = Vector2(2, 2)
+color = Color(0.9130417, 0.50188065, 0.36911872, 1)
+energy = 5.0
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 2
 texture = SubResource("GradientTexture2D_qhqgy")
 texture_scale = 3.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1827686620]
+zoom = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1278099715]
 shape = SubResource("RectangleShape2D_onrkg")
@@ -45,13 +52,13 @@ target_position = Vector2(0, 8)
 hit_from_inside = true
 
 [node name="e" type="RayCast2D" parent="." unique_id=1333904518]
-position = Vector2(-8, 0)
-target_position = Vector2(-8, 0)
+position = Vector2(8, 0)
+target_position = Vector2(8, 0)
 hit_from_inside = true
 
 [node name="w" type="RayCast2D" parent="." unique_id=1574554572]
-position = Vector2(8, 0)
-target_position = Vector2(8, 0)
+position = Vector2(-8, 0)
+target_position = Vector2(-8, 0)
 hit_from_inside = true
 
 [node name="nw" type="RayCast2D" parent="." unique_id=1131233147]
