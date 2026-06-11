@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ct67ejvdimnl5"]
 
-[ext_resource type="Texture2D" uid="uid://crn6h17ms0vra" path="res://assets/player_art.png" id="1_4flbx"]
+[ext_resource type="Texture2D" uid="uid://crn6h17ms0vra" path="res://assets/art/player_art.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://cu3b5xwm1ic26" path="res://scripts/player.gd" id="1_s027a"]
 
 [sub_resource type="Gradient" id="Gradient_g2els"]
@@ -19,6 +19,7 @@ size = Vector2(8, 8)
 self_modulate = Color(0.44755095, 0.44755095, 0.44755095, 1)
 top_level = true
 z_index = 5
+collision_layer = 3
 script = ExtResource("1_s027a")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=897099604]
@@ -37,6 +38,14 @@ texture_scale = 3.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1827686620]
 zoom = Vector2(2, 2)
+
+[node name="score" type="Label" parent="Camera2D" unique_id=486832586]
+offset_left = 143.0
+offset_top = -149.0
+offset_right = 197.0
+offset_bottom = -126.0
+text = "0/MAX"
+horizontal_alignment = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1278099715]
 shape = SubResource("RectangleShape2D_onrkg")

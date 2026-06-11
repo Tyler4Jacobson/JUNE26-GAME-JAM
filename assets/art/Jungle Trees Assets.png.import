@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ql6py4k1qe7r"
-path="res://.godot/imported/tiles_atlas.png-ede963b22f8f56ba9d732b566170bba0.ctex"
+uid="uid://c5lwrgvvhycg"
+path="res://.godot/imported/Jungle Trees Assets.png-688a673adbe358bb4e7c9e66d12b5475.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles_atlas.png"
-dest_files=["res://.godot/imported/tiles_atlas.png-ede963b22f8f56ba9d732b566170bba0.ctex"]
+source_file="res://assets/art/Jungle Trees Assets.png"
+dest_files=["res://.godot/imported/Jungle Trees Assets.png-688a673adbe358bb4e7c9e66d12b5475.ctex"]
 
 [params]
 
