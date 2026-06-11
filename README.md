@@ -7,7 +7,7 @@ This is the 'You Can Play This Game Jam'. More details here: https://itch.io/jam
 **Nicholas Pederson**
 **Josh Poppie**
 **David Schieffer**
-**John Stebbing**
+**John Stromberg**
 
 ## Theme
 Senses at play.
@@ -23,3 +23,4 @@ Pathfinding (Astar): https://docs.godotengine.org/en/4.4/classes/class_astargrid
 Tile Based Movement Tutorial: https://www.youtube.com/watch?v=PZu6ZGLpui8
 Godot Basics: https://www.youtube.com/watch?v=LOhfqjmasi0
 Goose Art: https://duckhive.itch.io/goose
+Water Ambient Sounds: https://pixabay.com/sound-effects/nature-water-noises-241049/
