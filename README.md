@@ -22,3 +22,4 @@ Tilemap Information: https://docs.godotengine.org/en/latest/tutorials/2d/using_t
 Pathfinding (Astar): https://docs.godotengine.org/en/4.4/classes/class_astargrid2d.html
 Tile Based Movement Tutorial: https://www.youtube.com/watch?v=PZu6ZGLpui8
 Godot Basics: https://www.youtube.com/watch?v=LOhfqjmasi0
+Goose Art: https://duckhive.itch.io/goose
