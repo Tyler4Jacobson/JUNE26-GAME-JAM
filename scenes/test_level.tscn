@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://c73x345c05hnt"]
 
-[ext_resource type="Texture2D" uid="uid://ql6py4k1qe7r" path="res://assets/tiles_atlas.png" id="1_j6w7d"]
+[ext_resource type="Texture2D" uid="uid://ql6py4k1qe7r" path="res://assets/art/tiles_atlas.png" id="1_j6w7d"]
 [ext_resource type="PackedScene" uid="uid://ct67ejvdimnl5" path="res://scenes/player.tscn" id="2_x4b8f"]
 [ext_resource type="PackedScene" uid="uid://biumn8qgadcdv" path="res://scenes/enemy.tscn" id="3_tmr53"]
 

@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://b3qrmj7ar141u"]
 
-[ext_resource type="Texture2D" uid="uid://ql6py4k1qe7r" path="res://assets/tiles_atlas.png" id="1_kddj0"]
+[ext_resource type="Texture2D" uid="uid://ql6py4k1qe7r" path="res://assets/art/tiles_atlas.png" id="1_kddj0"]
 [ext_resource type="PackedScene" uid="uid://ct67ejvdimnl5" path="res://scenes/player.tscn" id="2_q8s1k"]
 [ext_resource type="PackedScene" uid="uid://biumn8qgadcdv" path="res://scenes/enemy.tscn" id="3_mm0a5"]
 [ext_resource type="PackedScene" uid="uid://dvjkburcx7lss" path="res://scenes/coin.tscn" id="4_mm0a5"]
-[ext_resource type="Texture2D" uid="uid://cud74ci86w2nr" path="res://assets/topdown.png" id="4_q8s1k"]
+[ext_resource type="Texture2D" uid="uid://cud74ci86w2nr" path="res://assets/art/topdown.png" id="4_q8s1k"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kddj0"]
 light_mode = 2

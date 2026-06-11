@@ -17,6 +17,7 @@ var big_light_color = Color(0.992, 0.447, 0.035)
 func _ready() -> void:
 	update_light(false)
 	display_score()
+	game_manager.player_spawn()
 	
 	# TODO: set camera bounds
 

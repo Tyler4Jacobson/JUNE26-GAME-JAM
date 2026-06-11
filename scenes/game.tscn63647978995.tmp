@@ -5,13 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://ql6py4k1qe7r" path="res://assets/art/tiles_atlas.png" id="2_dis88"]
 [ext_resource type="Script" uid="uid://c72y3yenslm7a" path="res://scripts/game_manager.gd" id="2_u5sy4"]
 [ext_resource type="AudioStream" uid="uid://h1nplbca6imy" path="res://assets/sounds/sfx/death_2_toned_short.wav" id="3_gee14"]
-[ext_resource type="AudioStream" uid="uid://8vtiv2g5sbq1" path="res://assets/sounds/sfx/enemy_attack.wav" id="4_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://biumn8qgadcdv" path="res://scenes/enemy.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://b3qrmj7ar141u" path="res://scenes/playground.tscn" id="5_iywne"]
 [ext_resource type="Texture2D" uid="uid://cud74ci86w2nr" path="res://assets/art/topdown.png" id="5_p57ef"]
-[ext_resource type="AudioStream" uid="uid://hmupay73j8k2" path="res://assets/sounds/sfx/pickup_short.wav" id="5_vtaks"]
-[ext_resource type="AudioStream" uid="uid://juymcn80wefs" path="res://assets/sounds/sfx/spawn.wav" id="6_kvpfn"]
-[ext_resource type="AudioStream" uid="uid://thwtw13qaqpi" path="res://assets/sounds/sfx/water_ambient.mp3" id="7_dinhu"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_iywne"]
 light_mode = 2
@@ -288,26 +284,8 @@ script = ExtResource("1_5gf0t")
 unique_name_in_owner = true
 script = ExtResource("2_u5sy4")
 
-[node name="enemy_attack_sp" type="AudioStreamPlayer" parent="game_manager" unique_id=1399632072]
-unique_name_in_owner = true
-stream = ExtResource("4_0tnpc")
-volume_db = -10.0
-
-[node name="death_sp" type="AudioStreamPlayer" parent="game_manager" unique_id=697489677]
-unique_name_in_owner = true
+[node name="death_sound" type="AudioStreamPlayer" parent="game_manager" unique_id=697489677]
 stream = ExtResource("3_gee14")
-
-[node name="pickup_sp" type="AudioStreamPlayer" parent="game_manager" unique_id=1022747183]
-unique_name_in_owner = true
-stream = ExtResource("5_vtaks")
-
-[node name="spawn_sp" type="AudioStreamPlayer" parent="game_manager" unique_id=134953453]
-unique_name_in_owner = true
-stream = ExtResource("6_kvpfn")
-
-[node name="ambient_sp" type="AudioStreamPlayer" parent="game_manager" unique_id=892321406]
-unique_name_in_owner = true
-stream = ExtResource("7_dinhu")
 
 [node name="ground_layer" type="TileMapLayer" parent="." unique_id=1800278472]
 modulate = Color(0.37716255, 0.37716258, 0.37716255, 1)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ct67ejvdimnl5"]
 
-[ext_resource type="Texture2D" uid="uid://crn6h17ms0vra" path="res://assets/player_art.png" id="1_4flbx"]
+[ext_resource type="Texture2D" uid="uid://crn6h17ms0vra" path="res://assets/art/player_art.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://cu3b5xwm1ic26" path="res://scripts/player.gd" id="1_s027a"]
 
 [sub_resource type="Gradient" id="Gradient_g2els"]

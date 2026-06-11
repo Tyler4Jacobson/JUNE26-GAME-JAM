@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clj78shs33tmf"
-path="res://.godot/imported/Basic_Tileset.png-a141f486be2bd3cdd117d4785fbc78d2.ctex"
+uid="uid://cxv66nqi0e7iy"
+path="res://.godot/imported/Jungle plants.png-78b74c402a961c720b632e6e9e7e5ca2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Basic_Tileset.png"
-dest_files=["res://.godot/imported/Basic_Tileset.png-a141f486be2bd3cdd117d4785fbc78d2.ctex"]
+source_file="res://assets/art/Jungle plants.png"
+dest_files=["res://.godot/imported/Jungle plants.png-78b74c402a961c720b632e6e9e7e5ca2.ctex"]
 
 [params]
 
