@@ -40,11 +40,11 @@ texture_scale = 3.0
 zoom = Vector2(2, 2)
 
 [node name="score" type="Label" parent="Camera2D" unique_id=486832586]
-offset_left = 159.0
+offset_left = 143.0
 offset_top = -149.0
-offset_right = 199.0
+offset_right = 197.0
 offset_bottom = -126.0
-text = "0"
+text = "0/MAX"
 horizontal_alignment = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1278099715]

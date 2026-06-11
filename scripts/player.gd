@@ -28,6 +28,7 @@ func _physics_process(delta: float) -> void:
 		update_light(false)
 	
 	display_score()
+	#print(game_manager.get_score())
 	movement_manager(delta)
 	
 func movement_manager(delta: float) -> void:
@@ -93,4 +94,6 @@ func update_light(on: bool) -> void:
 		point_light_2d.color = small_light_color
 		
 func display_score() -> void:
-	score_label.text = str(game_manager.get_score())
+	var score = game_manager.get_score()
+	var max_score = game_manager.get_coin_count()
+	score_label.text = str(score, "/", max_score)

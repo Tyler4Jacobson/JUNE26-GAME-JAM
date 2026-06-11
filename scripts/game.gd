@@ -45,7 +45,7 @@ func _ready() -> void:
 	assign_data_to_spawned_scenes()
 	
 	#place collectibles
-	var coin_count = 50
+	var coin_count = game_manager.get_coin_count()
 	for x in range(coin_count):
 		if not safe_spots.is_empty():
 			var location = safe_spots.pop_back()
