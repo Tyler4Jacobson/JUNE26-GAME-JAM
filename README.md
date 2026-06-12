@@ -27,3 +27,4 @@ Goose Art: https://duckhive.itch.io/goose
 Water Ambient Sounds: https://pixabay.com/sound-effects/nature-water-noises-241049/
 Monogram Font: https://datagoblin.itch.io/monogram
 Player and Enemy Sprite: https://craftpix.net/freebies/octopus-jellyfish-shark-and-turtle-free-sprite-pixel-art/
+Bone Crunch: https://pixabay.com/sound-effects/film-special-effects-horror-bone-crack-352450/
