@@ -7,9 +7,41 @@
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4ra3w"]
 light_mode = 2
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ra3w"]
 atlas = ExtResource("2_4ra3w")
-region = Rect2(0, 0, 48, 0)
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4w8v"]
+atlas = ExtResource("2_4ra3w")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwavj"]
+atlas = ExtResource("2_4ra3w")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nenq2"]
+atlas = ExtResource("2_4ra3w")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_md484"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ra3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4w8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwavj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nenq2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="Gradient" id="Gradient_g2els"]
 offsets = PackedFloat32Array(0, 0.23728813, 0.44067797)
@@ -35,14 +67,15 @@ material = SubResource("CanvasItemMaterial_4ra3w")
 collision_mask = 2
 script = ExtResource("1_md0e3")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=897099604]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1148171354]
 visibility_layer = 512
 texture_filter = 1
 use_parent_material = true
 scale = Vector2(0.5, 0.5)
-texture = SubResource("AtlasTexture_5uy6h")
+sprite_frames = SubResource("SpriteFrames_md484")
+autoplay = "default"
 
-[node name="PointLight2D" type="PointLight2D" parent="Sprite2D" unique_id=2080079418]
+[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D" unique_id=2132324865]
 visible = false
 enabled = false
 color = Color(1, 0.35686275, 0.1764706, 1)

@@ -7,19 +7,12 @@ var global_astar: AStarGrid2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#
-	#
-	#Note this is hide() right now. This was so I could see the grid. Probably change back to show() ?
-	#
-	#
-	#$ScanCover.hide()
 	var size_x = randi_range(10, 30)
 	var size_y = randi_range(10, 30)
 	
 	initialize_grid(size_x, size_y)
 	procedural.randomize_grid(ground_layer, randf_range(0.1, 0.2))
 	procedural.fill_holes(ground_layer)
-	# random levels. Placing things besides the maze is beyond the scope of me _/(<^>)\_
 	
 	# Create AStarGrid after walls have been set
 	build_pathfinding_grid()
@@ -50,8 +43,6 @@ func _ready() -> void:
 		if not safe_spots.is_empty():
 			var location = safe_spots.pop_back()
 			playground.set_cell(location, 3, atlas_coords, 3)
-	
-	#procedural.get_clear_spaces(ground_layer)
 
 # Setup of AStarGrid
 func build_pathfinding_grid() -> void:
@@ -86,14 +77,6 @@ func get_valid_spawn_points() -> Array[Vector2i]:
 			valid_tiles.append(cell_pos)
 			
 	return valid_tiles
-
- #Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(_delta: float) -> void:
-	#pass
-	##if Input.is_action_pressed("ui_accept") and $ScanCover.visible == true:
-		##$PointLight2D.enabled = true
-	##elif Input.is_action_just_released("ui_accept") and $ScanCover.visible == false: #Input.is_action_just_released("ui_up") or Input.is_action_just_released("ui_down") or Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
-		##$PointLight2D.enabled = false
 
 func initialize_grid(size_x: int, size_y: int):
 	for x in range(size_x*-1, size_x):

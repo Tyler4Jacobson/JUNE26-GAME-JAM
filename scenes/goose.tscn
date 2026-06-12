@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://dvjkburcx7lss"]
+
+[ext_resource type="Script" uid="uid://dlhpuvtcx6l5h" path="res://scripts/goose.gd" id="1_wf0t2"]
+[ext_resource type="Texture2D" uid="uid://drgo603wwx1u0" path="res://assets/art/goose.png" id="2_g7ad0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wf0t2"]
+atlas = ExtResource("2_g7ad0")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7ad0"]
+atlas = ExtResource("2_g7ad0")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rsotj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wf0t2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7ad0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_i64fm"]
+light_mode = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i64fm"]
+size = Vector2(8, 8)
+
+[node name="Goose" type="Area2D" unique_id=377994511]
+collision_mask = 2
+script = ExtResource("1_wf0t2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1923127763]
+texture_filter = 1
+position = Vector2(0, 6)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_rsotj")
+autoplay = "default"
+frame = 1
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2040189817]
+material = SubResource("CanvasItemMaterial_i64fm")
+shape = SubResource("RectangleShape2D_i64fm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

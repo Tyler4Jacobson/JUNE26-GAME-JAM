@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var sprite_2d = $Sprite2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var tile_map: TileMapLayer
 var player: CharacterBody2D
@@ -30,8 +30,8 @@ func move_manager(delta: float) -> void:
 	if stun_timer > 0:
 		stun_timer -= delta
 	
-	var interval = 0.5
 	# If the player moves, update the path
+	var interval = 0.5
 	if is_moving:
 		timer += delta
 		if timer >= interval:
@@ -80,14 +80,18 @@ func move() -> void:
 		return
 	
 	global_position = tile_map.map_to_local(next_position)
-	sprite_2d.global_position = tile_map.map_to_local(original_position)
+	animated_sprite_2d.global_position = tile_map.map_to_local(original_position)
+	if start_cell.x > target_cell.x:
+		animated_sprite_2d.flip_h = true
+	else:
+		animated_sprite_2d.flip_h = false
 	
 	# make the enemy sprite slide nicely
 	if sprite_node_pos_tween:
 		sprite_node_pos_tween.kill()
 	sprite_node_pos_tween = create_tween()
 	sprite_node_pos_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-	sprite_node_pos_tween.tween_property(sprite_2d, "global_position", global_position, 0.185)
+	sprite_node_pos_tween.tween_property(animated_sprite_2d, "global_position", global_position, 0.185)
 	
 	is_moving = true
 	agro_flag = true

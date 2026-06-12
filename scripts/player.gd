@@ -17,9 +17,9 @@ var big_light_size = Vector2(3, 3)
 var big_light_color = Color(0.992, 0.447, 0.035)
 
 @onready var score_label: Label = $Camera2D/score
-@onready var point_light_2d: PointLight2D = $Sprite2D/PointLight2D
+@onready var point_light_2d: PointLight2D = $AnimatedSprite2D/PointLight2D
 @onready var light_area: Area2D = $Area2D
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var energy_1: ColorRect = $Camera2D/stun_container/energy_1
 @onready var energy_2: ColorRect = $Camera2D/stun_container/energy_2
 @onready var energy_3: ColorRect = $Camera2D/stun_container/energy_3
@@ -54,10 +54,12 @@ func _physics_process(delta: float) -> void:
 			var query = PhysicsRayQueryParameters2D.create(global_position, target.global_position)
 			query.exclude = [self.get_rid()]
 			if target.has_method("apply_stun"):
+				sprite_2d.play("stun")
 				enemies.append(target)
 				target.apply_stun(2.0)
+				await sprite_2d.animation_finished
+				sprite_2d.play("idle")
 		
-	
 	display_score()
 	movement_manager(delta)
 	
@@ -68,7 +70,6 @@ func movement_manager(delta: float) -> void:
 	var movement_vector = Vector2.ZERO
 	
 	timer += delta
-	#print(timer, interval)
 	# Governer slows down movement
 	if timer >= base_interval:
 		if Input.is_action_pressed("ui_up") and Input.is_action_pressed("ui_left") and !$nw.is_colliding():
@@ -101,11 +102,11 @@ func movement_manager(delta: float) -> void:
 			
 func _move(dir: Vector2):
 	global_position += dir * tile_size
-	$Sprite2D.global_position -= dir * tile_size
-	if dir.x > 0.0:
-		$Sprite2D.global_rotation = deg_to_rad(0)
-	elif dir.x < 0.0:
-		$Sprite2D.global_rotation = deg_to_rad(180)
+	sprite_2d.global_position -= dir * tile_size
+	if dir.x < 0.0:
+		sprite_2d.flip_h = true
+	elif dir.x > 0.0:
+		sprite_2d.flip_h = false
 	$Camera2D.global_position -= dir * tile_size
 	
 	if sprite_node_pos_tween:
@@ -116,7 +117,7 @@ func _move(dir: Vector2):
 	camera_pos_tween = create_tween()
 	sprite_node_pos_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	camera_pos_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-	sprite_node_pos_tween.tween_property($Sprite2D, "global_position", global_position, 0.185)
+	sprite_node_pos_tween.tween_property(sprite_2d, "global_position", global_position, 0.185)
 	camera_pos_tween.tween_property($Camera2D, "global_position", global_position, 0.25)
 
 func update_light(on: bool) -> void:

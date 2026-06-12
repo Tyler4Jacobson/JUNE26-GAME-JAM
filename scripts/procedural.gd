@@ -78,8 +78,6 @@ static func fill_holes(ground_layer: TileMapLayer):
 			ground_layer.set_cell(cell, 0, occupied_pos)
 	
 	
-	pass
-	
 static func get_clear_spaces(ground_layer: TileMapLayer) -> Array[Vector2i]:
 	var clear_cells: Array[Vector2i] = []
 	for cell_coords in ground_layer.get_used_cells():
