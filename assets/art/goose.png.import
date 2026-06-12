@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c36mcfvjvxaa0"
-path="res://.godot/imported/electric_eel.png-ff89fe8920831e96d0e9e15fd679ae9b.ctex"
+uid="uid://drgo603wwx1u0"
+path="res://.godot/imported/goose.png-c2d44cbfc5359a11b2c47bbe1504dc84.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/electric_eel.png"
-dest_files=["res://.godot/imported/electric_eel.png-ff89fe8920831e96d0e9e15fd679ae9b.ctex"]
+source_file="res://assets/art/goose.png"
+dest_files=["res://.godot/imported/goose.png-c2d44cbfc5359a11b2c47bbe1504dc84.ctex"]
 
 [params]
 

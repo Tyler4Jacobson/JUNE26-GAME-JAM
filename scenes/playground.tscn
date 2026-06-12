@@ -235,6 +235,8 @@ sources/3 = SubResource("TileSetScenesCollectionSource_o6wi6")
 [node name="playground" type="TileMapLayer" unique_id=1096450927]
 modulate = Color(0.07762883, 0.07762881, 0.07762881, 1)
 self_modulate = Color(0.13174233, 0.13174233, 0.13174233, 1)
+light_mask = 513
+visibility_layer = 512
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_kddj0")
 use_parent_material = true

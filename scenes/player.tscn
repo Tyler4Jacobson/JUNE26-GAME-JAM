@@ -1,7 +1,14 @@
 [gd_scene format=3 uid="uid://ct67ejvdimnl5"]
 
-[ext_resource type="Texture2D" uid="uid://crn6h17ms0vra" path="res://assets/art/player_art.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://cu3b5xwm1ic26" path="res://scripts/player.gd" id="1_s027a"]
+[ext_resource type="Texture2D" uid="uid://bqbtnth3bvey3" path="res://assets/art/eel.png" id="2_g2els"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
+atlas = ExtResource("2_g2els")
+region = Rect2(0, 0, 48, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_g2els"]
+light_mode = 2
 
 [sub_resource type="Gradient" id="Gradient_g2els"]
 offsets = PackedFloat32Array(0.30526316, 0.3533654, 0.39473686)
@@ -23,10 +30,15 @@ collision_layer = 3
 script = ExtResource("1_s027a")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=897099604]
+light_mask = 0
 texture_filter = 1
-texture = ExtResource("1_4flbx")
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_qhqgy")
 
 [node name="PointLight2D" type="PointLight2D" parent="Sprite2D" unique_id=2080079418]
+light_mask = 513
+visibility_layer = 513
+material = SubResource("CanvasItemMaterial_g2els")
 scale = Vector2(2, 2)
 color = Color(0.9130417, 0.50188065, 0.36911872, 1)
 energy = 5.0

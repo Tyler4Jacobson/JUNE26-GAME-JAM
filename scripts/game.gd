@@ -13,8 +13,8 @@ func _ready() -> void:
 	#
 	#
 	$ScanCover.hide()
-	var size_x = randi_range(10, 50)
-	var size_y = randi_range(10, 50)
+	var size_x = randi_range(10, 30)
+	var size_y = randi_range(10, 30)
 	
 	initialize_grid(size_x, size_y)
 	procedural.randomize_grid(ground_layer, randf_range(0.4, 0.6))
@@ -35,7 +35,7 @@ func _ready() -> void:
 		playground.set_cell(player_location, 1, atlas_coords, 1)
 	
 	#place enemies
-	var enemy_count = 25
+	var enemy_count = 0
 	for x in range(enemy_count):
 		if not safe_spots.is_empty(): 
 			var location = safe_spots.pop_back()
@@ -107,24 +107,34 @@ func set_grid_boundary(size_x: int, size_y: int):
 	for x in range(size_x*-1, size_x):
 		# set bottom layer
 		var tile_pos = Vector2i(x, size_y-1)
-		var atlas_pos = Vector2i(1, 4)
+		var atlas_pos = Vector2i(5, 9)
 		if x == size_x*-1:
-			atlas_pos = Vector2i(15, 4)
+			atlas_pos = Vector2i(4, 9)
 		elif x == size_x-1:
-			atlas_pos = Vector2i(16, 4)
+			atlas_pos = Vector2i(6, 9)
+			
 		ground_layer.set_cell(tile_pos, 0, atlas_pos)
+		
 		# set top layer
 		tile_pos = Vector2i(x, size_y*-1)
-		if x == size_x*-1 or x == size_x-1:
-			atlas_pos.y = atlas_pos.y - 1
+		atlas_pos = Vector2i(5, 8)
+		if x == size_x*-1:
+			atlas_pos = Vector2i(4, 8)
+		elif x == size_x-1:
+			atlas_pos = Vector2i(6, 8)
+			
 		ground_layer.set_cell(tile_pos, 0, atlas_pos)
 	
 	# don't double do corners
 	for y in range(size_y*-1 + 1, size_y-1):
 		# set left layer
 		var tile_pos = Vector2i(size_x*-1, y)
-		var atlas_pos = Vector2i(4, 1)
+		var atlas_pos = Vector2i(2, 9)
+		#if y == size_y-1:
+			#atlas_pos = Vector2i(2, 9)
 		ground_layer.set_cell(tile_pos, 0, atlas_pos)
+		
 		# set right layer
 		tile_pos.x = tile_pos.x * -1 - 1
+		atlas_pos = Vector2i(0, 9)
 		ground_layer.set_cell(tile_pos, 0, atlas_pos)

@@ -13,8 +13,8 @@ const MOORES_NEIGHBORHOOD = [
 	TileSet.CELL_NEIGHBOR_BOTTOM_RIGHT_CORNER
 ]
 
-const occupied_pos = Vector2i(4, 4)
-const clear_pos = Vector2i(1, 1)
+const occupied_pos = Vector2i(4, 11) 	# Ground
+const clear_pos = Vector2i(6, 11)		# Water
 
 static func randomize_grid(ground_layer: TileMapLayer, density: float):
 	var cells = procedural.get_clear_spaces(ground_layer)
