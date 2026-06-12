@@ -3,7 +3,7 @@ extends CharacterBody2D
 const tile_size: Vector2 = Vector2(16,16)
 var sprite_node_pos_tween: Tween
 var camera_pos_tween: Tween
-var timer = 0.0
+var move_cooldown: float = 0.0
 
 var small_light_size = Vector2(0.5, 0.5)
 var small_light_color = Color(0.913, 0.502, 0.369)
@@ -23,16 +23,28 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	
+	# echolocation
 	if Input.is_action_pressed("ui_accept"):
 		update_light(true)
 	elif Input.is_action_just_released("ui_accept"): #Input.is_action_just_released("ui_up") or Input.is_action_just_released("ui_down") or Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
 		update_light(false)
 	
-	display_score()
-	#print(game_manager.get_score())
-	movement_manager(delta)
+	# stun
+	if Input.is_action_just_pressed("duck"):
+		var space_state = get_world_2d().direct_space_state
+		var targets = light_area.get_overlapping_bodies()
+		for target in targets:
+			var query = PhysicsRayQueryParameters2D.create(global_position, target.global_position)
+			query.exclude = [self.get_rid()]
+			var result = space_state.intersect_ray(query)
+			if target.has_method("apply_stun"): # and result.collider == target:
+				target.apply_stun(2.0)
+		
 	
-func movement_manager(delta: float) -> void:
+	display_score()
+	movement_manager(delta, input_dir)
+	
+func movement_manager(delta: float, input_dir: Vector2) -> void:
 	var base_interval = 0.1
 	var diag_interval = base_interval * sqrt(2)
 	var interval = base_interval
