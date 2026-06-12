@@ -10,6 +10,9 @@ const tile_size: Vector2 = Vector2(16,16)
 var sprite_node_pos_tween: Tween
 var timer = 0.0
 var stun_timer: float = 0.0
+var stunned_color = Color.BLUE
+var clear_color = Color.WHITE
+
 
 var agro_flag: bool = false
 var agro_range: int = 10
@@ -37,6 +40,7 @@ func move_manager(delta: float) -> void:
 		return
 		
 	if stun_timer <= 0:
+		modulate = clear_color
 		move()
 
 # Move enemy one step toward player along AStar Path
@@ -107,4 +111,5 @@ func is_cell_occupied(target_cell: Vector2i) -> bool:
 	return false
 
 func apply_stun(duration: float) -> void:
+	modulate = stunned_color
 	stun_timer = max(stun_timer, duration)
