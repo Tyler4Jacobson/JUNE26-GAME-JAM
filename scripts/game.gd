@@ -12,7 +12,7 @@ func _ready() -> void:
 	#Note this is hide() right now. This was so I could see the grid. Probably change back to show() ?
 	#
 	#
-	$ScanCover.hide()
+	#$ScanCover.hide()
 	var size_x = randi_range(10, 30)
 	var size_y = randi_range(10, 30)
 	

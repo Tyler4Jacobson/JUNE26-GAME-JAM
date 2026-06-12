@@ -96,9 +96,13 @@ static func get_score() -> int:
 
 static func add_charge() -> void:
 	charge += 1
+	if charge > MAX_CHARGE:
+		charge = MAX_CHARGE
 
 static func subtract_charge(count: int) -> void:
 	charge -= count
+	if charge < 0:
+		charge = 0
 	
 static func get_charge() -> int:
 	return charge

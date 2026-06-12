@@ -20,10 +20,14 @@ var big_light_color = Color(0.992, 0.447, 0.035)
 @onready var point_light_2d: PointLight2D = $Sprite2D/PointLight2D
 @onready var light_area: Area2D = $Area2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var energy_1: ColorRect = $Camera2D/stun_container/energy_1
+@onready var energy_2: ColorRect = $Camera2D/stun_container/energy_2
+@onready var energy_3: ColorRect = $Camera2D/stun_container/energy_3
 
 func _ready() -> void:
 	update_light(false)
 	display_score()
+	display_energy()
 	game_manager.player_spawn()
 	
 	# TODO: set camera bounds
@@ -33,6 +37,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and game_manager.get_charge() > 0:
 		light_timer = 5.0
 		game_manager.subtract_charge(LIGHT_COST)
+	display_energy()
 		
 	light_timer -= 0.1
 	
@@ -126,3 +131,25 @@ func display_score() -> void:
 	var score = game_manager.get_score()
 	var max_score = game_manager.get_coin_count()
 	score_label.text = str(score, "/", max_score)
+
+func display_energy() -> void:
+	var charge = game_manager.get_charge()
+	match charge:
+		0:
+			energy_1.visible = false
+			energy_2.visible = false
+			energy_3.visible = false
+		1:
+			energy_1.visible = true
+			energy_2.visible = false
+			energy_3.visible = false
+		2:
+			energy_1.visible = true
+			energy_2.visible = true
+			energy_3.visible = false
+		3:
+			energy_1.visible = true
+			energy_2.visible = true
+			energy_3.visible = true
+		_:
+			printerr("TOO MUCH POWER: ", charge)
