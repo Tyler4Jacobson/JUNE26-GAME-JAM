@@ -28,12 +28,12 @@ static func _cellular_iteration(ground_layer: TileMapLayer, cells: Array[Vector2
 	var clear_cells = [] #dead
 	for cell_coords in cells:
 		var clear_count = 0
-		var clear = ground_layer.get_cell_atlas_coords(cell_coords) == Vector2i(1, 1)
+		var clear = ground_layer.get_cell_atlas_coords(cell_coords) == clear_pos
 		var neighbors = []
 		for direction in MOORES_NEIGHBORHOOD:
 			neighbors.append(ground_layer.get_neighbor_cell(cell_coords, direction))
 		for neighbor in neighbors:
-			if ground_layer.get_cell_atlas_coords(neighbor) == Vector2i(1, 1):
+			if ground_layer.get_cell_atlas_coords(neighbor) == clear_pos:
 				clear_count = clear_count + 1
 		var occupied_count = 8 - clear_count
 		#cell dies
@@ -84,6 +84,6 @@ static func get_clear_spaces(ground_layer: TileMapLayer) -> Array[Vector2i]:
 	var clear_cells: Array[Vector2i] = []
 	for cell_coords in ground_layer.get_used_cells():
 		var atlas_coords = ground_layer.get_cell_atlas_coords(cell_coords)
-		if atlas_coords == Vector2i(1, 1):
+		if atlas_coords == clear_pos:
 			clear_cells.append(cell_coords)
 	return clear_cells

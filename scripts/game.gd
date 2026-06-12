@@ -99,7 +99,7 @@ func initialize_grid(size_x: int, size_y: int):
 	for x in range(size_x*-1, size_x):
 		for y in range(size_y*-1, size_y):
 			var tile_pos = Vector2i(x, y)
-			var atlas_pos = Vector2i(1, 1) #all blank, edges later
+			var atlas_pos = Vector2i(6, 11) #all blank, edges later
 			ground_layer.set_cell(tile_pos, 0, atlas_pos)
 	set_grid_boundary(size_x, size_y)
 	

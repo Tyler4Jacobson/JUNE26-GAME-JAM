@@ -16,6 +16,7 @@ var big_light_color = Color(0.992, 0.447, 0.035)
 @onready var score_label: Label = $Camera2D/score
 @onready var point_light_2d: PointLight2D = $Sprite2D/PointLight2D
 @onready var light_area: Area2D = $Area2D
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 func _ready() -> void:
 	update_light(false)
@@ -89,6 +90,10 @@ func movement_manager(delta: float) -> void:
 func _move(dir: Vector2):
 	global_position += dir * tile_size
 	$Sprite2D.global_position -= dir * tile_size
+	if dir.x > 0.0:
+		$Sprite2D.global_rotation = deg_to_rad(0)
+	elif dir.x < 0.0:
+		$Sprite2D.global_rotation = deg_to_rad(180)
 	$Camera2D.global_position -= dir * tile_size
 	
 	if sprite_node_pos_tween:
