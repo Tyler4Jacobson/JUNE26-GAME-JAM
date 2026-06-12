@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dvjkburcx7lss"]
 
 [ext_resource type="Script" uid="uid://87d4v70m7scj" path="res://scripts/coin.gd" id="1_i64fm"]
-[ext_resource type="Texture2D" uid="uid://bqbtnth3bvey3" path="res://assets/Idle.png" id="2_i64fm"]
+[ext_resource type="Texture2D" uid="uid://drgo603wwx1u0" path="res://assets/art/goose.png" id="2_i64fm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_11l1o"]
 atlas = ExtResource("2_i64fm")
-region = Rect2(17, 0, 32, 32)
+region = Rect2(19, 0, 29, 38)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_i64fm"]
 light_mode = 2

@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://biumn8qgadcdv"]
 
 [ext_resource type="Script" uid="uid://blb6jq8f166yr" path="res://scripts/enemy.gd" id="1_md0e3"]
-[ext_resource type="Texture2D" uid="uid://crn6h17ms0vra" path="res://assets/player_art.png" id="2_4ra3w"]
+[ext_resource type="Texture2D" uid="uid://x6m142hc67dw" path="res://assets/art/shark.png" id="2_4ra3w"]
 [ext_resource type="PackedScene" uid="uid://c8hn8cc7iwage" path="res://scenes/killzone.tscn" id="3_4ra3w"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4ra3w"]
-light_mode = 2
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
+atlas = ExtResource("2_4ra3w")
+region = Rect2(0, 0, 48, 0)
 
 [sub_resource type="Gradient" id="Gradient_g2els"]
 offsets = PackedFloat32Array(0, 0.23728813, 0.44067797)
@@ -28,10 +29,9 @@ collision_mask = 2
 script = ExtResource("1_md0e3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=897099604]
-modulate = Color(1, 0.06666667, 0.043137256, 1)
 texture_filter = 1
-material = SubResource("CanvasItemMaterial_4ra3w")
-texture = ExtResource("2_4ra3w")
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_5uy6h")
 
 [node name="PointLight2D" type="PointLight2D" parent="Sprite2D" unique_id=2080079418]
 visible = false

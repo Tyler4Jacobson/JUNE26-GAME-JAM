@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ci1iitnadgboa"
-path="res://.godot/imported/tiles_atlas2.png-202b686822dab1fb2147177972f36d99.ctex"
+uid="uid://x6m142hc67dw"
+path="res://.godot/imported/shark.png-db80ea87276d6ea85e41484dc8d23e23.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles_atlas2.png"
-dest_files=["res://.godot/imported/tiles_atlas2.png-202b686822dab1fb2147177972f36d99.ctex"]
+source_file="res://assets/art/shark.png"
+dest_files=["res://.godot/imported/shark.png-db80ea87276d6ea85e41484dc8d23e23.ctex"]
 
 [params]
 

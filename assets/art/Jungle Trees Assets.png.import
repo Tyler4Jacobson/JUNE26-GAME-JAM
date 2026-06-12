@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g6o2mdmbdmly"
-path="res://.godot/imported/basic0.png-3f1c1860bcce964b36387eeaa087ed68.ctex"
+uid="uid://c5lwrgvvhycg"
+path="res://.godot/imported/Jungle Trees Assets.png-688a673adbe358bb4e7c9e66d12b5475.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/basic0.png"
-dest_files=["res://.godot/imported/basic0.png-3f1c1860bcce964b36387eeaa087ed68.ctex"]
+source_file="res://assets/art/Jungle Trees Assets.png"
+dest_files=["res://.godot/imported/Jungle Trees Assets.png-688a673adbe358bb4e7c9e66d12b5475.ctex"]
 
 [params]
 

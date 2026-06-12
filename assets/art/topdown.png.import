@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ql6py4k1qe7r"
-path="res://.godot/imported/tiles_atlas.png-ede963b22f8f56ba9d732b566170bba0.ctex"
+uid="uid://cud74ci86w2nr"
+path="res://.godot/imported/topdown.png-84f3db8a9fc4ff482e07e7fe848559ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles_atlas.png"
-dest_files=["res://.godot/imported/tiles_atlas.png-ede963b22f8f56ba9d732b566170bba0.ctex"]
+source_file="res://assets/art/topdown.png"
+dest_files=["res://.godot/imported/topdown.png-84f3db8a9fc4ff482e07e7fe848559ba.ctex"]
 
 [params]
 
