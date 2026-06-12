@@ -1,5 +1,6 @@
 # JUNE26-GAME-JAM
-This is the 'You Can Play This Game Jam'. More details here: https://itch.io/jam/you-can-play-this-game-jam
+This is the 'You Can Play This Game Jam'. 
+More details here: https://itch.io/jam/you-can-play-this-game-jam
 
 ## Team
 **Luke Daenzer**
@@ -24,3 +25,5 @@ Tile Based Movement Tutorial: https://www.youtube.com/watch?v=PZu6ZGLpui8
 Godot Basics: https://www.youtube.com/watch?v=LOhfqjmasi0
 Goose Art: https://duckhive.itch.io/goose
 Water Ambient Sounds: https://pixabay.com/sound-effects/nature-water-noises-241049/
+Monogram Font: https://datagoblin.itch.io/monogram
+Player and Enemy Sprite: https://craftpix.net/freebies/octopus-jellyfish-shark-and-turtle-free-sprite-pixel-art/

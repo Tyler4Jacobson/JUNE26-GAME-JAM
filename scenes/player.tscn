@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cu3b5xwm1ic26" path="res://scripts/player.gd" id="1_s027a"]
 [ext_resource type="Texture2D" uid="uid://bqbtnth3bvey3" path="res://assets/art/eel.png" id="2_g2els"]
+[ext_resource type="FontFile" uid="uid://bib6ecw518x3t" path="res://assets/monogram-extended.ttf" id="3_qhqgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_g2els")
@@ -20,6 +21,15 @@ width = 128
 height = 128
 fill = 1
 fill_from = Vector2(0.5121528, 0.4982639)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dqkch"]
+font = ExtResource("3_qhqgy")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_qhqgy"]
+font = ExtResource("3_qhqgy")
+font_size = 24
+font_color = Color(0, 0, 0, 0.5882353)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 48.04165
@@ -61,7 +71,48 @@ offset_top = -149.0
 offset_right = 197.0
 offset_bottom = -126.0
 text = "0/MAX"
+label_settings = SubResource("LabelSettings_dqkch")
 horizontal_alignment = 2
+
+[node name="stun_container" type="ColorRect" parent="Camera2D" unique_id=543021713]
+offset_left = -195.0
+offset_top = 122.0
+offset_right = -58.0
+offset_bottom = 142.0
+color = Color(1, 1, 1, 0.5882353)
+
+[node name="stun" type="Label" parent="Camera2D/stun_container" unique_id=478236067]
+layout_mode = 0
+offset_left = 3.0
+offset_right = 65.0
+offset_bottom = 20.0
+text = "ENERGY"
+label_settings = SubResource("LabelSettings_qhqgy")
+vertical_alignment = 1
+
+[node name="energy_1" type="ColorRect" parent="Camera2D/stun_container" unique_id=1802713414]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 1.0
+offset_right = 82.0
+offset_bottom = 19.0
+color = Color(0, 0.47843137, 0.91764706, 0.5882353)
+
+[node name="energy_2" type="ColorRect" parent="Camera2D/stun_container" unique_id=899294307]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 1.0
+offset_right = 108.0
+offset_bottom = 19.0
+color = Color(0, 0.47843137, 0.91764706, 0.5882353)
+
+[node name="energy_3" type="ColorRect" parent="Camera2D/stun_container" unique_id=67401076]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 1.0
+offset_right = 134.0
+offset_bottom = 19.0
+color = Color(0, 0.47843137, 0.91764706, 0.5882353)
 
 [node name="n" type="RayCast2D" parent="." unique_id=362791034]
 position = Vector2(0, -8)
