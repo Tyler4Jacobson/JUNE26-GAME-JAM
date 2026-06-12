@@ -4,6 +4,8 @@ class_name game_manager
 
 static var score: int = 0
 static var coin_count: int = 100
+static var charge: int = 0
+static var MAX_CHARGE: int = 3
 
 # Sound
 static var volume: float = 0.1		# Ranges from 0.0 to 1.0
@@ -40,7 +42,7 @@ func _ready() -> void:
 		volume
 	)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var sound_player = get_sound_player(soundID.AMBIENT)
 	if not sound_player.playing:
 		play_sound(sound_player)
@@ -86,9 +88,20 @@ static func play_sound(sound_player: AudioStreamPlayer):
 
 static func add_score() -> void:
 	score += 1
+	if charge <= MAX_CHARGE:
+		add_charge()
 
 static func get_score() -> int:
 	return score
+
+static func add_charge() -> void:
+	charge += 1
+
+static func subtract_charge(count: int) -> void:
+	charge -= count
+	
+static func get_charge() -> int:
+	return charge
 
 static func get_coin_count() -> int:
 	return coin_count

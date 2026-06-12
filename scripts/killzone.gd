@@ -7,7 +7,7 @@ extends Area2D
 
 # killzone collision mask on layer 2
 # same as the player layer
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	game_manager.enemy_attack()
 	game_manager.player_death()
 	timer.start()

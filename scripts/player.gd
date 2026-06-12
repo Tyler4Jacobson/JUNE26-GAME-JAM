@@ -5,7 +5,10 @@ var sprite_node_pos_tween: Tween
 var camera_pos_tween: Tween
 var move_cooldown: float = 0.0
 var timer: float = 0.0
+var light_timer: float = 0.0
 var enemies: Array[Node2D] = []
+var LIGHT_COST: int = 1
+var STUN_COST: int = 1
 
 var small_light_size = Vector2(1, 1)
 var small_light_color = Color(0.913, 0.502, 0.369)
@@ -26,21 +29,25 @@ func _ready() -> void:
 	# TODO: set camera bounds
 
 func _physics_process(delta: float) -> void:
-	
 	# echolocation
-	if Input.is_action_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") and game_manager.get_charge() > 0:
+		light_timer = 5.0
+		game_manager.subtract_charge(LIGHT_COST)
+		
+	light_timer -= 0.1
+	
+	if light_timer >= 0.0:
 		update_light(true)
-	elif Input.is_action_just_released("ui_accept"):
+	else:
 		update_light(false)
 	
 	# stun
-	if Input.is_key_pressed(KEY_SHIFT):
-		var space_state = get_world_2d().direct_space_state
+	if Input.is_key_pressed(KEY_SHIFT) and game_manager.get_charge() > 0:
+		game_manager.subtract_charge(LIGHT_COST)
 		var targets = light_area.get_overlapping_bodies()
 		for target in targets:
 			var query = PhysicsRayQueryParameters2D.create(global_position, target.global_position)
 			query.exclude = [self.get_rid()]
-			var result = space_state.intersect_ray(query)
 			if target.has_method("apply_stun"):
 				enemies.append(target)
 				target.apply_stun(2.0)
