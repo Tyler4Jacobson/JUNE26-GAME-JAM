@@ -55,7 +55,6 @@ light_mask = 513
 visibility_layer = 513
 material = SubResource("CanvasItemMaterial_g2els")
 scale = Vector2(2, 2)
-color = Color(0.9130417, 0.50188065, 0.36911872, 1)
 energy = 5.0
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
