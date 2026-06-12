@@ -2,8 +2,6 @@ extends Area2D
 
 @onready var timer = $Timer
 
-@onready var death_sound_player: AudioStreamPlayer = $death_sound_player
-
 # killzone collision mask on layer 2
 # same as the player layer
 func _on_body_entered(_body: Node2D) -> void:
