@@ -4,8 +4,10 @@ const tile_size: Vector2 = Vector2(16,16)
 var sprite_node_pos_tween: Tween
 var camera_pos_tween: Tween
 var move_cooldown: float = 0.0
+var timer: float = 0.0
+var enemies: Array[Node2D] = []
 
-var small_light_size = Vector2(0.5, 0.5)
+var small_light_size = Vector2(1, 1)
 var small_light_color = Color(0.913, 0.502, 0.369)
 
 var big_light_size = Vector2(3, 3)
@@ -13,6 +15,7 @@ var big_light_color = Color(0.992, 0.447, 0.035)
 
 @onready var score_label: Label = $Camera2D/score
 @onready var point_light_2d: PointLight2D = $Sprite2D/PointLight2D
+@onready var light_area: Area2D = $Area2D
 
 func _ready() -> void:
 	update_light(false)
@@ -26,25 +29,26 @@ func _physics_process(delta: float) -> void:
 	# echolocation
 	if Input.is_action_pressed("ui_accept"):
 		update_light(true)
-	elif Input.is_action_just_released("ui_accept"): #Input.is_action_just_released("ui_up") or Input.is_action_just_released("ui_down") or Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
+	elif Input.is_action_just_released("ui_accept"):
 		update_light(false)
 	
 	# stun
-	if Input.is_action_just_pressed("duck"):
+	if Input.is_key_pressed(KEY_SHIFT):
 		var space_state = get_world_2d().direct_space_state
 		var targets = light_area.get_overlapping_bodies()
 		for target in targets:
 			var query = PhysicsRayQueryParameters2D.create(global_position, target.global_position)
 			query.exclude = [self.get_rid()]
 			var result = space_state.intersect_ray(query)
-			if target.has_method("apply_stun"): # and result.collider == target:
+			if target.has_method("apply_stun"):
+				enemies.append(target)
 				target.apply_stun(2.0)
 		
 	
 	display_score()
-	movement_manager(delta, input_dir)
+	movement_manager(delta)
 	
-func movement_manager(delta: float, input_dir: Vector2) -> void:
+func movement_manager(delta: float) -> void:
 	var base_interval = 0.1
 	var diag_interval = base_interval * sqrt(2)
 	var interval = base_interval

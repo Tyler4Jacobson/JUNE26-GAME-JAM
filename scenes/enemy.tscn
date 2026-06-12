@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://x6m142hc67dw" path="res://assets/art/shark.png" id="2_4ra3w"]
 [ext_resource type="PackedScene" uid="uid://c8hn8cc7iwage" path="res://scenes/killzone.tscn" id="3_4ra3w"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4ra3w"]
+light_mode = 2
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
 atlas = ExtResource("2_4ra3w")
 region = Rect2(0, 0, 48, 0)
@@ -14,6 +17,8 @@ colors = PackedColorArray(1, 1, 1, 1, 0.33894232, 0.33894232, 0.33894232, 1, 0, 
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qhqgy"]
 gradient = SubResource("Gradient_g2els")
+width = 32
+height = 32
 fill = 1
 fill_from = Vector2(0.5121528, 0.4982639)
 
@@ -24,12 +29,16 @@ size = Vector2(8, 8)
 size = Vector2(8, 8)
 
 [node name="enemy" type="CharacterBody2D" unique_id=956896073]
+visibility_layer = 512
 z_index = 5
+material = SubResource("CanvasItemMaterial_4ra3w")
 collision_mask = 2
 script = ExtResource("1_md0e3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=897099604]
+visibility_layer = 512
 texture_filter = 1
+use_parent_material = true
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_5uy6h")
 

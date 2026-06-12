@@ -9,6 +9,7 @@ var astar_grid: AStarGrid2D
 const tile_size: Vector2 = Vector2(16,16)
 var sprite_node_pos_tween: Tween
 var timer = 0.0
+var stun_timer: float = 0.0
 
 var agro_flag: bool = false
 var agro_range: int = 10
@@ -23,6 +24,9 @@ func move_manager(delta: float) -> void:
 	if player == null or astar_grid == null or tile_map == null:
 		return
 	
+	if stun_timer > 0:
+		stun_timer -= delta
+	
 	var interval = 0.5
 	# If the player moves, update the path
 	if is_moving:
@@ -31,7 +35,9 @@ func move_manager(delta: float) -> void:
 			is_moving = false
 			timer -= interval
 		return
-	move()
+		
+	if stun_timer <= 0:
+		move()
 
 # Move enemy one step toward player along AStar Path
 func move() -> void:
@@ -99,3 +105,6 @@ func is_cell_occupied(target_cell: Vector2i) -> bool:
 	
 	# not occupied
 	return false
+
+func apply_stun(duration: float) -> void:
+	stun_timer = max(stun_timer, duration)

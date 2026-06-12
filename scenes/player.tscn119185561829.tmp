@@ -11,18 +11,13 @@ region = Rect2(0, 0, 48, 0)
 light_mode = 2
 
 [sub_resource type="Gradient" id="Gradient_g2els"]
-offsets = PackedFloat32Array(0.41643837, 0.539726, 0.5589041, 0.68767124)
-colors = PackedColorArray(1, 1, 1, 1, 0.39836323, 0.39836323, 0.39836323, 1, 0.33894232, 0.33894232, 0.33894232, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0.30526316, 0.3533654, 0.39473686)
+colors = PackedColorArray(1, 1, 1, 1, 0.33894232, 0.33894232, 0.33894232, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qhqgy"]
 gradient = SubResource("Gradient_g2els")
-width = 128
-height = 128
 fill = 1
 fill_from = Vector2(0.5121528, 0.4982639)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
-radius = 48.04165
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(8, 8)
@@ -51,6 +46,7 @@ shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 2
 texture = SubResource("GradientTexture2D_qhqgy")
+texture_scale = 3.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1827686620]
 zoom = Vector2(2, 2)
@@ -106,7 +102,4 @@ hit_from_inside = true
 [node name="Area2D" type="Area2D" parent="." unique_id=714683428]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1278099715]
-shape = SubResource("CircleShape2D_g2els")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1342715185]
 shape = SubResource("RectangleShape2D_onrkg")

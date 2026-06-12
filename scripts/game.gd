@@ -17,7 +17,7 @@ func _ready() -> void:
 	var size_y = randi_range(10, 30)
 	
 	initialize_grid(size_x, size_y)
-	procedural.randomize_grid(ground_layer, randf_range(0.4, 0.6))
+	procedural.randomize_grid(ground_layer, randf_range(0.1, 0.2))
 	procedural.fill_holes(ground_layer)
 	# random levels. Placing things besides the maze is beyond the scope of me _/(<^>)\_
 	
@@ -35,7 +35,7 @@ func _ready() -> void:
 		playground.set_cell(player_location, 1, atlas_coords, 1)
 	
 	#place enemies
-	var enemy_count = 0
+	var enemy_count = 10
 	for x in range(enemy_count):
 		if not safe_spots.is_empty(): 
 			var location = safe_spots.pop_back()
