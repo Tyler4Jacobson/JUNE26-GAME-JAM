@@ -23,8 +23,14 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	
+	# echolocation
 	if Input.is_action_pressed("ui_accept"):
 		update_light(true)
+	elif Input.is_action_just_released("ui_accept"): #Input.is_action_just_released("ui_up") or Input.is_action_just_released("ui_down") or Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
+		update_light(false)
+	
+	# stun
+	if Input.is_action_just_pressed("duck"):
 		var space_state = get_world_2d().direct_space_state
 		var targets = light_area.get_overlapping_bodies()
 		for target in targets:
@@ -33,8 +39,7 @@ func _physics_process(delta: float) -> void:
 			var result = space_state.intersect_ray(query)
 			if target.has_method("apply_stun"): # and result.collider == target:
 				target.apply_stun(2.0)
-	elif Input.is_action_just_released("ui_accept"): #Input.is_action_just_released("ui_up") or Input.is_action_just_released("ui_down") or Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
-		update_light(false)
+		
 	
 	if move_cooldown > 0:
 		move_cooldown -= delta
