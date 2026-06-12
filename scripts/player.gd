@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const tile_size: Vector2 = Vector2(16,16)
 var sprite_node_pos_tween: Tween
+var camera_pos_tween: Tween
 var move_cooldown: float = 0.0
 
 var small_light_size = Vector2(0.5, 0.5)
@@ -49,9 +50,9 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	display_score()
-	movement_manager(delta)
+	movement_manager(delta, input_dir)
 	
-func movement_manager(delta: float) -> void:
+func movement_manager(delta: float, input_dir: Vector2) -> void:
 	var base_interval = 0.1
 	var diag_interval = base_interval * sqrt(2)
 	var interval_to_use = base_interval
